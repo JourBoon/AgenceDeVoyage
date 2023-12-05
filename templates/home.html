@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
     <title>ADV - Accueil</title>
 </head>
 <body>
-    <h1>{{ voyages }}</h1>
+
+    <div class="navigation">
+        <ul>
+            <li><a href="reserver.html">Réserver</a></li>
+            <li><a class="active" href="#">Home</a></li>
+        </ul>
+    </div>
+
+    
+
+    <h1 id="title">Réservez vos vacances dans les plus beau lieux du monde</h1>
+
 </body>
 </html>
