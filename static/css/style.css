@@ -37,11 +37,11 @@ body {
 }
 
 .header-top-contact a:hover {
-  color: rgb(255, 255, 255); /* Change the color on hover */
+  color: rgb(255, 255, 255);
 }
 
 .header-top-contact:nth-child(2) {
-  margin-right: 6px; /* Ajustez la valeur en conséquence pour décaler vers le haut */
+  margin-right: 6px; 
 }
 
 
@@ -73,7 +73,7 @@ body {
 }
 
 .navbar-brand span {
-  color: #ff004c; /* Yellow color for the 'V' */
+  color: #ff004c; /* Red color for the 'V' */
 }
 
 .navbar-menu {
@@ -112,12 +112,13 @@ body {
 }
 
 .intro-section {
-   /* Remplacez par le chemin de votre image */
+  /*background-image: url("{{ url_for('static', filename= '../images/banner.jpg') }}");*/
   background-size: cover;
   background-position: center;
   color: #fff;
   text-align: center;
-  padding: 100px 0; /* Ajustez la marge intérieure selon vos besoins */
+  padding: 100px 0;
+  margin-top: 40px;
 }
 
 .intro-content {
@@ -127,11 +128,13 @@ body {
 
 .intro-content h1 {
   font-size: 36px;
+  transition: background-color 0.3s ease;
 }
 
 .intro-content p {
   font-size: 18px;
   margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
 
 
@@ -139,6 +142,31 @@ body {
     animation-duration: 0.8s;
     animation-fill-mode: both;
 }
+
+/*HERO BACKGROUND*/
+@keyframes heroFadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(-20px);
+  }
+}
+
+@keyframes heroFadeOutUp {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/*HEADER*/
 
 @keyframes fadeInDown {
   from {
