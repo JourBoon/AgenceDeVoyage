@@ -6,61 +6,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_inscription.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>ADV - Inscription</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .registration-section {
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            padding: 80px 20px;
-            color: #fff;
-        }
-
-        .registration-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .registration-content h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        form {
-            display: grid;
-            gap: 15px;
-        }
-
-        label {
-            font-size: 1.2em;
-            display: block;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            font-size: 1em;
-        }
-
-        button {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border: none;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-    </style>
 </head>
 <body>
 
@@ -93,6 +38,7 @@
     </section>
 
     <section class="registration-section" style="background-image: url('../static/images/banner.jpg')">
+        <div class="overlay"></div> <!-- Superposition semi-transparente -->
         <div class="registration-content">
             data-in="heroFadeInDown" data-out="heroFadeOutUp">
             <h1>Inscrivez-vous</h1>

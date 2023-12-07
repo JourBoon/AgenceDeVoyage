@@ -1,9 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
 
 body {
-  font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;
-}
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+.registration-section {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 80px 20px;
+            color: #fff;
+            height: 100vh; /* Hauteur de 100% de la vue */
+        }
+
+.overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Superposition semi-transparente */
+        }
+
+.registration-content {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2; /* Assure que le contenu est au-dessus de la superposition */
+        }
+
+.registration-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+form {
+            display: grid;
+            gap: 15px;
+        }
+label {
+            font-size: 1.2em;
+            display: block;
+        }
+input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+        }
+button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+        }
+
+button:hover {
+            background-color: #2980b9;
+        }
 
 .header-top {
   background-color: rgb(98, 79, 100);
