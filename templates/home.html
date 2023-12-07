@@ -4,20 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>ADV - Accueil</title>
 </head>
 <body>
 
-    <div class="navigation">
+    <header id="header-top" class="header-top">
         <ul>
-            <li><a href="reserver.html">Réserver</a></li>
-            <li><a class="active" href="#">Home</a></li>
+            <li class="header-top-contact">
+                <a href="#">Se connecter</a>
+            </li>
+            <li class="header-top-contact">
+                <a href="#">S'inscrire</a>
+            </li>
         </ul>
-    </div>
+                
+    </header><!--/.header-top-->
 
-    
+    <section class="navbar">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">AD<span>V</span></a>
 
-    <h1 id="title">Réservez vos vacances dans les plus beau lieux du monde</h1>
+        </div><!--/.navbar-header-->
+
+        <div class="navbar-menu" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class=" scroll active"><a href="#home">accueil</a></li>
+                <li class="scroll"><a href="#works">réserver</a></li>
+                <li class="scroll"><a href="#explore">explorer</a></li>
+                <li class="scroll"><a href="#reviews">avis</a></li>
+                <li class="scroll"><a href="#blog">blog</a></li>
+                <li class="scroll"><a href="#contact">contact</a></li>
+            </ul><!--/.nav -->
+        </div><!-- /.navbar-collapse -->
+    </section>
+
+    <section class="intro-section">
+        <div class="intro-content">
+            <h1>Texte d'accroche</h1>
+            <p>Ce texte pourrait être une description ou tout autre contenu que vous souhaitez afficher sous l'image en arrière-plan.</p>
+        </div>
+    </section>
+
 
 </body>
 </html>
