@@ -3,9 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_inscription.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>ADV - Inscription</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .registration-section {
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 80px 20px;
+            color: #fff;
+        }
+
+        .registration-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .registration-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 1.2em;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-    <h1>Inscription</h1>
+
+    <header id="header-top" class="header-top">
+        <ul>
+            <li class="header-top-contact">
+                <a href="#">Se connecter</a>
+            </li>
+            <li class="header-top-contact">
+                <a href="inscription.html">S'inscrire</a>
+            </li>
+        </ul>
+    </header><!--/.header-top-->
+
+    <section class="navbar">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">AD<span>V</span></a>
+        </div><!--/.navbar-header-->
+
+        <div class="navbar-menu" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class=" scroll"><a href="#home">accueil</a></li>
+                <li class="scroll"><a href="reserver.html">réserver</a></li>
+                <li class="scroll"><a href="#explore">explorer</a></li>
+                <li class="scroll"><a href="#reviews">avis</a></li>
+                <li class="scroll"><a href="#blog">blog</a></li>
+                <li class="scroll"><a href="#contact">contact</a></li>
+            </ul><!--/.nav -->
+        </div><!-- /.navbar-collapse -->
+    </section>
+
+    <section class="registration-section" style="background-image: url('../static/images/banner.jpg')">
+        <div class="registration-content">
+            data-in="heroFadeInDown" data-out="heroFadeOutUp">
+            <h1>Inscrivez-vous</h1>
+            
+            <!-- Ajoutez vos champs de formulaire ici -->
+            <form>
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </section>
+
 </body>
 </html>
