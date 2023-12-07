@@ -13,5 +13,10 @@ def reserver():
     yo = "Reserver"
     return render_template("reserver.html", voyages=yo)
 
+@app.route('/inscription.html')
+def inscription():
+    yo = "Inscription"
+    return render_template("inscription.html", voyages=yo)
+
 if __name__ == '__main__':
     app.run(debug=True)
