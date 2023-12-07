@@ -8,7 +8,7 @@ body {
             overflow: hidden; /* Empêche le défilement vertical */
         }
 
-        .connection-section {
+.connection-section {
             position: relative;
             background-size: cover;
             background-position: center;
@@ -18,7 +18,7 @@ body {
             height: 100vh; /* Hauteur de 100% de la vue */
         }
 
-        .overlay {
+.overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -27,35 +27,32 @@ body {
             background: rgba(0, 0, 0, 0.5); /* Superposition semi-transparente */
         }
 
-        .connection-content {
+.connection-content {
             max-width: 600px;
             margin: 0 auto;
             position: relative;
             z-index: 2; /* Assure que le contenu est au-dessus de la superposition */
         }
 
-        .connection-content h1 {
+.connection-content h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
         }
 
-        form {
+form {
             display: grid;
             gap: 15px;
         }
-
-        label {
+label {
             font-size: 1.2em;
             display: block;
         }
-
-        input {
+input {
             width: 100%;
             padding: 10px;
             font-size: 1em;
         }
-
-        button {
+button {
             background-color: #3498db;
             color: #fff;
             padding: 10px 20px;
@@ -63,10 +60,9 @@ body {
             cursor: pointer;
             border: none;
         }
-
-        button:hover {
+button:hover {
             background-color: #2980b9;
-        }
+        }²
 
 .header-top {
   background-color: rgb(98, 79, 100);
