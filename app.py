@@ -1,3 +1,7 @@
+import sys
+sys.path.append('static/services')
+sys.path.append('static/services/exceptions')
+
 from flask import Flask
 from flask import render_template, request, g
 from DBUtils import DBUtils
