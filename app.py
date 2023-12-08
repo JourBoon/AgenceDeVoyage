@@ -9,8 +9,7 @@ db_utils.connect()
 
 @app.route('/')
 def home():
-    yo = "Home Page"
-    return render_template("home.html", voyages=yo)
+    return render_template("home.html")
 
 @app.route('/reserver.html')
 def reserver():
