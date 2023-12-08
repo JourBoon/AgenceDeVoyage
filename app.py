@@ -18,10 +18,5 @@ def inscription():
     yo = "Inscription"
     return render_template("inscription.html", voyages=yo)
 
-@app.route('/connexion.html')
-def inscription():
-    yo = "Connexion"
-    return render_template("connexion.html", voyages=yo)
-
 if __name__ == '__main__':
     app.run(debug=True)
