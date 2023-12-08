@@ -13,7 +13,6 @@ CREATE TABLE DESTINATION (
     nom_dest TEXT,
     desc_dest TEXT,
     cost INT,
-    tel_num INT,
     places INT,
     duree INT,
 );
@@ -50,3 +49,5 @@ CREATE TABLE PAIEMENT (
     cost INT,
     paye_date DATE
 );
+
+INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('John Doe', "sdfgkishg", 25, 3, 5);
