@@ -1,7 +1,11 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, request, g
+from DBUtils import DBUtils
 
 app = Flask(__name__ ,template_folder='templates', static_folder='static')
+
+db_utils = DBUtils("database/database.db")
+db_utils.connect()
 
 @app.route('/')
 def home():

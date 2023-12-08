@@ -14,26 +14,24 @@ class DBUtils:
 
     def execute(self, request):
         try:
-            res = self.cur.execute(request)
-            if res == None:
-                raise RequestExecutionException
-            else:
-                return res
-        except RequestExecutionException:
+            self.cur.execute(request)
+            return self.cur.fetchall()
+        except sqlite3.Error as e:
             print("Error while executing request:", request)
+            print("SQLite error:", e)
+            raise RequestExecutionException(str(e))
 
     def multiExecute(self, request, dataSet):
         try:
-            res = self.cur.executemany(request, dataSet)
-            if res == None:
-                raise RequestExecutionException
-            else:
-                return res
-        except RequestExecutionException:
+            self.cur.executemany(request, dataSet)
+            self.con.commit()
+        except sqlite3.Error as e:
             print("Error while executing multi request:", request)
+            print("SQLite error:", e)
+            raise RequestExecutionException(str(e))
 
     def insert(self, request, data):
-        self.multiExecute(request, data)
+        self.multiExecute(request, [data])
 
     def multiInsert(self, request, dataSet):
         self.multiExecute(request, dataSet)
