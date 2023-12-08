@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.header-top {
+  background-color: rgb(98, 79, 100);
+  color: #fff;
+  padding: 10px 0;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.header-top ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-top-contact {
+  display: inline-block;
+  margin-left: 20px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.header-top-contact a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.header-top-contact a:hover {
+  color: rgb(255, 255, 255);
+}
+
+.header-top-contact:nth-child(2) {
+  margin-right: 6px; 
+}
+
+
+/* Navbar Styles */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.navbar-header {
+  padding: 15px 0;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.navbar-brand span {
+  color: #ff004c; /* Red color for the 'V' */
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.navbar-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.navbar-menu li {
+  display: inline-block;
+  margin-right: 20px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+  color: #006eff; /* Change the color on hover */
+}
+
+.intro-section {
+  /*background-image: url("{{ url_for('static', filename= '../images/banner.jpg') }}");*/
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
+  margin-top: 40px;
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-content h1 {
+  font-size: 36px;
+  transition: background-color 0.3s ease;
+}
+
+.intro-content p {
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+
+.navbar-menu ul[data-in], .navbar-menu ul[data-out] {
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+}
+
+/*HERO BACKGROUND*/
+@keyframes heroFadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(-20px);
+  }
+}
+
+@keyframes heroFadeOutUp {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/*HEADER*/
+
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.navbar-menu ul[data-in] li,
+.navbar-menu ul[data-out] li {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-delay: 0.3s;
+}
+
+.navbar-menu ul[data-in] .scroll:nth-child(1),
+.navbar-menu ul[data-out] .scroll:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.navbar-menu ul[data-in] .scroll:nth-child(2),
+.navbar-menu ul[data-out] .scroll:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.navbar-menu ul[data-in] .scroll:nth-child(3),
+.navbar-menu ul[data-out] .scroll:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
+.navbar-menu ul[data-in] .scroll:nth-child(4),
+.navbar-menu ul[data-out] .scroll:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.navbar-menu ul[data-in] .scroll:nth-child(5),
+.navbar-menu ul[data-out] .scroll:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+.navbar-menu ul[data-in] .scroll:nth-child(6),
+.navbar-menu ul[data-out] .scroll:nth-child(1) {
+  animation-delay: 0.8s;
+}
+
+.navbar-menu ul[data-in] li {
+  animation-name: fadeInDown;
+}
+
+.navbar-menu ul[data-out] li {
+  animation-name: fadeOutUp;
+}
