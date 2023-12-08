@@ -17,6 +17,8 @@ class DBUtils:
             res = self.cur.execute(request)
             if res == None:
                 raise RequestExecutionException
+            else:
+                return res
         except RequestExecutionException:
             print("Error while executing request:", request)
 
@@ -24,7 +26,9 @@ class DBUtils:
         try:
             res = self.cur.executemany(request, dataSet)
             if res == None:
-                RequestExecutionException
+                raise RequestExecutionException
+            else:
+                return res
         except RequestExecutionException:
             print("Error while executing multi request:", request)
 
