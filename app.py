@@ -13,18 +13,15 @@ def home():
 
 @app.route('/reserver.html')
 def reserver():
-    yo = "Reserver"
-    return render_template("reserver.html", voyages=yo)
+    return render_template("reserver.html")
 
 @app.route('/inscription.html')
 def inscription():
-    yo = "Inscription"
-    return render_template("inscription.html", voyages=yo)
+    return render_template("inscription.html")
 
 @app.route('/connexion.html')
 def connexion():
-    yo = "Connexion"
-    return render_template("connexion.html", voyages=yo)
+    return render_template("connexion.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
