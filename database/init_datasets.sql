@@ -50,7 +50,7 @@ CREATE TABLE PAIEMENT (
     paye_date DATE
 );
 
-INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('Paris', 'Vol à Paris sans escale ', 180, 280, 70);
+INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('Nantes-Paris', 'Vol à Paris sans escale ', 180, 280, 70);
 
 INSERT INTO ACTIVITE (id_dest, nom_act, sup_cost, duree_act, date_act, desc_act) VALUES (1, 'Louvres', 17, 3, 'None', 'Visite guidée du musée du Louvres');
 
