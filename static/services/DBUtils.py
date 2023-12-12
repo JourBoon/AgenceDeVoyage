@@ -11,6 +11,7 @@ class DBUtils:
     def connect(self):
         self.con = sqlite3.connect(self.url)
         self.cur = self.con.cursor()
+        print("Connected to database")
 
     def execute(self, request):
         try:
