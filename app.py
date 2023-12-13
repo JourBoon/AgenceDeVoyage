@@ -6,6 +6,8 @@ from flask import Flask
 from flask import render_template, request, g
 from DBUtils import DBUtils
 
+print("Imports successfully instanciated")
+
 app = Flask(__name__ ,template_folder='templates', static_folder='static')
 
 db_utils = DBUtils("database/database.db")
