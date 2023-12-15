@@ -53,14 +53,11 @@ CREATE TABLE PAIEMENT (
 INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('Nantes-Paris', 'Vol à Paris sans escale ', 180, 280, 70);
 INSERT INTO ACTIVITE (id_dest, nom_act, sup_cost, duree_act, date_act, desc_act) VALUES (1, 'Louvres', 17, 3, 'None', 'Visite guidée du musée du Louvres');
 
-
 INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('Paris-Barcelone', 'Vol direct vers Barcelone', 220, 320, 90);
 INSERT INTO ACTIVITE (id_dest, nom_act, sup_cost, duree_act, date_act, desc_act) VALUES (2, 'Sagrada Familia', 20, 4, '2023-12-30', 'Visite guidée de la Sagrada Familia');
 
-
 INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('New York-Miami', 'Vol de New York à Miami', 300, 250, 120);
 INSERT INTO ACTIVITE (id_dest, nom_act, sup_cost, duree_act, date_act, desc_act) VALUES (3, 'South Beach', 25, 5, '2023-12-28', 'Détente sur la plage de South Beach');
-
 
 INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('Rio de Janeiro-Buenos Aires', 'Vol de Rio de Janeiro à Buenos Aires', 280, 220, 100);
 INSERT INTO ACTIVITE (id_dest, nom_act, sup_cost, duree_act, date_act, desc_act) VALUES (7, 'Tango Show', 25, 3, '2023-08-10', 'Spectacle de tango');
@@ -82,6 +79,10 @@ INSERT INTO ACTIVITE (id_dest, nom_act, sup_cost, duree_act, date_act, desc_act)
 
 INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('Hong Kong-Shanghai', 'Vol de Hong Kong à Shanghai', 260, 220, 95);
 INSERT INTO ACTIVITE (id_dest, nom_act, sup_cost, duree_act, date_act, desc_act) VALUES (13, 'Tour de la Perle Orientale', 25, 3, '2023-02-15', 'Visite de la Tour de la Perle Orientale');
+
+INSERT INTO DESTINATION (nom_dest, desc_dest, cost, places, duree) VALUES ('Istanbul-Athènes', 'Vol de Istanbul à Athènes', 230, 190, 85);
+INSERT INTO ACTIVITE (id_dest, nom_act, sup_cost, duree_act, date_act, desc_act) VALUES (14, 'Parthénon', 20, 4, '2023-01-25', 'Visite du Parthénon');
+
 
 /*
 Patern :
