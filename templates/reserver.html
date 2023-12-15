@@ -37,25 +37,14 @@
         </div><!-- /.navbar-collapse -->
     </section>
 
-    <section class="connection-section" style="background-image: url('../static/images/banner.jpg')">
-        <div class="overlay"></div>
-        <div class="connection-content">
+    <section class="reserv" style="background-image: url('../static/images/banner.jpg')">
+        <div class="reserv-content">
             
             <form>
-
+                <input class="reserv-bouton" type ="button" value="Résever Mon Voyage !" />
             </form>
         </div>
     </section>
 
-    <section>
-        <ul class="voyages">
-            {% for trips in voyages%}
-                {%if trips is None%}
-                    <li class="nulltrip"><a href="#home">Aucun voyage</a></li>
-                    {%endif%}
-                <li class="trip"><a href="#home">trips</a></li>
-            {%endfor%}
-        </ul><!--/.nav -->
-    </section>
 </body>
 </html>
