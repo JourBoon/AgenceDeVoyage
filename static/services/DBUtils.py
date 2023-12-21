@@ -1,22 +1,22 @@
 import sqlite3
-import RequestExecutionException
+import threading
+from RequestExecutionException import RequestExecutionException
 
 class DBUtils:
-
     def __init__(self, url):
         self.url = url
-        self.con = None
-        self.cur = None
+        self.local = threading.local()
 
     def connect(self):
-        self.con = sqlite3.connect(self.url)
-        self.cur = self.con.cursor()
-        print("Connected to database")
+        if not hasattr(self.local, 'con') or self.local.con is None:
+            self.local.con = sqlite3.connect(self.url)
+            self.local.cur = self.local.con.cursor()
 
     def execute(self, request):
         try:
-            self.cur.execute(request)
-            return self.cur.fetchall()
+            self.connect()
+            self.local.cur.execute(request)
+            return self.local.cur.fetchall()
         except sqlite3.Error as e:
             print("Error while executing request:", request)
             print("SQLite error:", e)
@@ -24,8 +24,9 @@ class DBUtils:
 
     def multiExecute(self, request, dataSet):
         try:
-            self.cur.executemany(request, dataSet)
-            self.con.commit()
+            self.connect()
+            self.local.cur.executemany(request, dataSet)
+            self.local.con.commit()
         except sqlite3.Error as e:
             print("Error while executing multi request:", request)
             print("SQLite error:", e)

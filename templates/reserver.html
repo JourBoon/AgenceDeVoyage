@@ -46,5 +46,12 @@
         </div>
     </section>
 
+    <section>
+        <ul class="voyages">
+            {% for voyage in voyages %}
+                <li>{{ voyage[0] }} - {{ voyage[1] }}</li>
+            {% endfor %}
+        </ul><!--/.nav -->
+    </section>
 </body>
 </html>
