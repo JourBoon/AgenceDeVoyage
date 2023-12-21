@@ -49,12 +49,9 @@
 
     <section>
         <ul class="voyages">
-            {% for trips in voyages%}
-                {%if trips is None%}
-                    <li class="nulltrip"><a href="#home">Aucun voyage</a></li>
-                    {%endif%}
-                <li class="trip"><a href="#home">trips</a></li>
-            {%endfor%}
+            {% for voyage in voyages %}
+                <li>{{ voyage[0] }} - {{ voyage[1] }}</li>
+            {% endfor %}
         </ul><!--/.nav -->
     </section>
 </body>
