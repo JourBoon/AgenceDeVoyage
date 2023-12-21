@@ -29,8 +29,11 @@ def reserver():
 def explorer():
     voyages = []
     voyages = db_utils.fetch("SELECT nom_dest, cost FROM DESTINATION")
+    dao = []
     for value in voyages:
-        print(value)
+        dao.append(voyageDAO.toVoyage(value))
+    for v in dao:
+        print(v.getCost())
     return render_template("explorer.html", voyages=voyages)
 
 @app.route('/inscription.html')
