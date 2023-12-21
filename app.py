@@ -19,11 +19,15 @@ def home():
 
 @app.route('/reserver.html')
 def reserver():
+    return render_template("reserver.html")
+
+@app.route('/explorer.html')
+def explorer():
     voyages = []
     voyages = db_utils.fetch("SELECT nom_dest, cost FROM DESTINATION")
     for value in voyages:
         print(value)
-    return render_template("reserver.html", voyages=voyages)
+    return render_template("explorer.html", voyages=voyages)
 
 @app.route('/inscription.html')
 def inscription():
