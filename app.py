@@ -1,10 +1,12 @@
 import sys
 sys.path.append('static/services')
+sys.path.append('static/models')
 sys.path.append('static/services/exceptions')
 
 from flask import Flask
 from flask import render_template, request, g
 from DBUtils import DBUtils
+from VoyageDAO import VoyageDAO
 
 print("Imports successfully instanciated")
 
@@ -12,6 +14,8 @@ app = Flask(__name__ ,template_folder='templates', static_folder='static')
 
 db_utils = DBUtils("database/database.db")
 db_utils.connect()
+
+voyageDAO = VoyageDAO()
 
 @app.route('/')
 def home():
