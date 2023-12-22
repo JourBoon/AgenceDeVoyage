@@ -21,22 +21,22 @@ voyageDAO = VoyageDAO()
 def home():
     return render_template("home.html")
 
-@app.route('/reserver.html')
+@app.route('/reserver')
 def reserver():
     return render_template("reserver.html")
 
-@app.route('/explorer.html')
+@app.route('/explorer')
 def explorer():
     destinations = db_utils.fetch("SELECT nom_dest, desc_dest, cost FROM DESTINATION")
     column_names = [column[0] for column in db_utils.local.cur.description]
     destinations_objects = [voyageDAO.toDestination(value, column_names) for value in destinations]
     return render_template("explorer.html", voyages=destinations_objects)
 
-@app.route('/inscription.html')
+@app.route('/inscription')
 def inscription():
     return render_template("inscription.html")
 
-@app.route('/connexion.html')
+@app.route('/connexion')
 def connexion():
     return render_template("connexion.html")
 
