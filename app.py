@@ -27,13 +27,10 @@ def reserver():
 
 @app.route('/explorer.html')
 def explorer():
-    destinations = db_utils.fetch("SELECT nom_dest, cost FROM DESTINATION")
-    dao = []
-    for value in destinations:
-        dao.append(voyageDAO.toDestination(value))
-    for v in dao:
-        print(v.getCost())
-    return render_template("explorer.html", voyages=destinations)
+    destinations = db_utils.fetch("SELECT nom_dest, desc_dest, cost FROM DESTINATION")
+    column_names = [column[0] for column in db_utils.local.cur.description]
+    destinations_objects = [voyageDAO.toDestination(value, column_names) for value in destinations]
+    return render_template("explorer.html", voyages=destinations_objects)
 
 @app.route('/inscription.html')
 def inscription():

@@ -1,23 +1,23 @@
 class Destination:
 
-    def __init__(self, dataset):
-        self.dataset = dataset
+    def __init__(self, dataset, column_names):
+        self.data_dict = dict(zip(column_names, dataset))
 
     def getName(self):
-        return self.dataset.get("nom_dest", None)
+        return self.data_dict.get("nom_dest", None)
 
     def getCost(self):
-        return self.dataset.get("cost", None)
+        return self.data_dict.get("cost", None)
     
     def getDesc(self):
-        return self.dataset.get("desc_dest", None)
+        return self.data_dict.get("desc_dest", None)
     
     def getPlaces(self):
-        return self.dataset.get("places", None)
+        return self.data_dict.get("places", None)
     
     def getDuration(self):
-        return self.dataset.get("duree", None)
+        return self.data_dict.get("duree", None)
     
     def getValue(self, value):
-        return self.dataset.get(value, None)
+        return self.data_dict.get(value, None)
 
