@@ -49,7 +49,7 @@
     <section>
         <ul class="voyages">
             {% for voyage in voyages %}
-                <li>{{ voyage[0] }} - {{ voyage[1] }}</li>
+                <li>{{ voyage.getName() }} - {{ voyage.getDesc() }} - {{ voyage.getCost() }}</li>
             {% endfor %}
         </ul><!--/.nav -->
     </section>

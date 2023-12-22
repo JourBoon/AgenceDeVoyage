@@ -1,4 +1,5 @@
 from voyage import Voyage
+from destination import Destination
 
 class VoyageDAO:
 
@@ -7,3 +8,6 @@ class VoyageDAO:
 
     def toVoyage(self, dataset):
         return Voyage(dataset)
+    
+    def toDestination(self, dataset):
+        return Destination(dataset)
