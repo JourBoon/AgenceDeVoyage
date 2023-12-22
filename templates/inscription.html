@@ -43,8 +43,15 @@
             data-in="heroFadeInDown" data-out="heroFadeOutUp">
             <h1>Inscrivez-vous</h1>
             
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="notification is-danger">
+                    {{ messages[0] }}. Go to <a href="{{ url_for('auth.connexion') }}">Se connecter</a>.
+                </div>
+            {% endif %}
+            {% endwith %}
 
-            <form method="POST">
+            <form method="POST" action="/inscription">
                 <label for="username">Nom d'utilisateur:</label>
                 <input type="text" id="username" name="username" required>
 
