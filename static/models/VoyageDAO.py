@@ -9,5 +9,5 @@ class VoyageDAO:
     def toVoyage(self, dataset):
         return Voyage(dataset)
     
-    def toDestination(self, dataset):
-        return Destination(dataset)
+    def toDestination(self, dataset, column_names):
+        return Destination(dataset, column_names)
