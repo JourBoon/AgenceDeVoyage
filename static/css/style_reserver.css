@@ -249,4 +249,10 @@ body {
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
+  top: 10px; 
+  left: 90%;
+  
+  transform: translateX(-50%); 
 }
+
