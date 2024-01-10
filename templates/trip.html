@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_reserver.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_trip.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>ADV - Explorer</title>
+    <title>ADV - {{destination.getName}}</title>
 </head>
 <body>
     <header id="header-top" class="header-top">
@@ -37,23 +37,21 @@
         </div><!-- /.navbar-collapse -->
     </section>
 
-    <section>
-        <ul class="voyages">
-            <div class="card-container">
-                {% for voyage in voyages %}
-                    <a href="{{ url_for('trip', dest_name=voyage.getName()) }}">
-                        <div class="card">
-                            <img src="../static/images/expeditions.jpg" alt="Card Image">
-                            <div class="card-content">
-                                <div class="card-title">{{ voyage.getName() }}</div>
-                                <div class="card-description">{{ voyage.getDesc() }}</div>
-                                <div class="card-cost">Coût: {{ voyage.getCost() }}€</div>
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
-        </ul><!--/.nav -->
+    <section class="trip-details">
+        <h1>{{ destination.getName() }}</h1>
+        <p>{{ destination.getDesc() }}</p>
+        <p>Coût: {{ destination.getCost() }}€</p>
+
+        <!-- Formulaire de réservation -->
+        <form action="{{ url_for('explorer') }}" method="post">
+            <input type="hidden" name="Destination" value="{{ destination.getName() }}">
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <input type="submit" value="Réserver">
+        </form>
     </section>
+
 </body>
 </html>

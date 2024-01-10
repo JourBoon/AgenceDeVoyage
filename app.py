@@ -25,7 +25,7 @@ def home():
 def reserver():
     return render_template("reserver.html")
 
-@app.route('/explorer')
+@app.route('/explore')
 def explorer():
     destinations = db_utils.fetch("SELECT nom_dest, desc_dest, cost FROM DESTINATION")
     column_names = [column[0] for column in db_utils.local.cur.description]
@@ -39,6 +39,22 @@ def inscription():
 @app.route('/connexion')
 def connexion():
     return render_template("connexion.html")
+
+@app.route('/trip')
+def trip():
+    dest_name = request.args.get('dest_name')
+    if dest_name:
+        # Si le paramètre voyage_name est présent dans l'URL
+        destinaton = voyageDAO.getDestinationByName(dest_name)
+        if destinaton:
+            return render_template("trip.html", destination=destinaton)
+        else:
+            # Gérer le cas où le voyage n'est pas trouvé
+            return render_template("error.html", message="Destination non trouvé")
+    else:
+        # Gérer le cas où le paramètre voyage_name est absent
+        return render_template("error.html", message="Paramètre manquant dans l'URL")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
