@@ -3,6 +3,9 @@ class Destination:
     def __init__(self, dataset, column_names):
         self.data_dict = dict(zip(column_names, dataset))
 
+    def getID(self):
+        return self.data_dict.get("id_dest", None)
+
     def getName(self):
         return self.data_dict.get("nom_dest", None)
 
