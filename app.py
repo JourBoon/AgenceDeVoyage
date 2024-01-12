@@ -44,15 +44,12 @@ def connexion():
 def trip():
     dest_name = request.args.get('dest_name')
     if dest_name:
-        # Si le paramètre voyage_name est présent dans l'URL
         destinaton = voyageDAO.getDestinationByName(dest_name)
         if destinaton:
             return render_template("trip.html", destination=destinaton)
         else:
-            # Gérer le cas où le voyage n'est pas trouvé
             return render_template("error.html", message="Destination non trouvé")
     else:
-        # Gérer le cas où le paramètre voyage_name est absent
         return render_template("error.html", message="Paramètre manquant dans l'URL")
 
 
