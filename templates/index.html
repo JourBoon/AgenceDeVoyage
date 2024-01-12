@@ -151,91 +151,22 @@
 	
 	<div class="gtco-section">
 		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>Destinations Populaires</h2>
-					<p>Retrouvez nos destinations les plus appréciées des aventuriers !.</p>
-				</div>
+			<div class="gtco-heading text-center">
+				<h2>Destinations Populaires</h2>
+				<p>Retrouvez nos destinations les plus appréciées des aventuriers !</p>
 			</div>
-			<div class="row">
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="../static/images/1.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<img src="../static/images/1.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>New York, USA</h2>
-							<p>Les vacances au chaud le top !</p>
-							<p><span class="btn btn-primary">Rechercher un voyage</span></p>
-						</div>
-					</a>
+			<div class="gtco-destinations">
+				{% for voyage in voyages %}
+				<div class="gtco-destination">
+					<img src="../static/images/1.jpg" alt="{{voyage.getName}}">
+					<div class="gtco-destination-info">
+						<h2>{{voyage.getName()}}</h2>
+						<p>{{voyage.getDesc()}}</p>
+						<button class="gtco-btn">Rechercher un voyage</button>
+					</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="../static/images/2.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<img src="../static/images/2.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Seoul, Corée du Nord</h2>
-							<p>Les vacances au chaud le top !</p>
-							<p><span class="btn btn-primary">Rechercher un voyage</span></p>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="../static/images/3.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<img src="../static/images/3.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Paris, France</h2>
-							<p>Les vacances au froid le top !</p>
-							<p><span class="btn btn-primary">Rechercher un voyage</span></p>
-						</div>
-					</a>
-				</div>
-
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="../static/images/4.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<img src="../static/images/4.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Sydney, Australie</h2>
-							<p>Les vacances au chaud le top !</p>
-							<p><span class="btn btn-primary">Rechercher un voyage</span></p>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="../static/images/img_5.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<img src="../static/images/img_5.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Grèce, Europe</h2>
-							<p>Les vacances au chaud le top !</p>
-							<p><span class="btn btn-primary">Rechercher un voyage</span></p>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<a href="../static/images/img_6.jpg" class="fh5co-card-item image-popup">
-						<figure>
-							<img src="../static/images/img_6.jpg" alt="Image" class="img-responsive">
-						</figure>
-						<div class="fh5co-text">
-							<h2>Espagne, Europe</h2>
-							<p>Les vacances au chaud le top !</p>
-							<p><span class="btn btn-primary">Rechercher un voyage</span></p>
-						</div>
-					</a>
-				</div>
-
+                {% endfor %}
+	
 			</div>
 		</div>
 	</div>

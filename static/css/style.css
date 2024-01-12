@@ -1112,6 +1112,71 @@ form label {
   transform: rotate(-180deg);
 }
 
+.gtco-destination {
+  flex: 0 0 calc(33.3333% - 20px); /* Utilisez 33.3333% pour afficher trois cartes par ligne */
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  max-width: 100%;
+}
+
+.gtco-destination:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.gtco-destination img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gtco-destination-info {
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  transition: background 0.3s ease;
+}
+
+.gtco-destination:hover .gtco-destination-info {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.gtco-destination-info h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.gtco-destination-info p {
+  margin-bottom: 15px;
+}
+
+.gtco-btn {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.gtco-destination:hover .gtco-btn {
+  background-color: #297fb8;
+}
+
+
 .uppercase {
   font-size: 14px;
   color: #000;
