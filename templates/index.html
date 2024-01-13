@@ -2,6 +2,7 @@
 <html>
 	<head>
 	<meta charset="utf-8">
+	<meta lang="fr">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>ADV - France</title>
 
@@ -16,15 +17,15 @@
 	<div id="page">
 
 	<nav class="adv-nav">
-		<div class="adv-container">		
-			<div class="row">			
+		<div class="adv-container">	
+			<div class="row">	
 				<div id="adv-logo"><a href="/">AD<em>V</em></a></div>
 					<ul>
 						<li><a href="destination.html">Destinations</a></li>
 						<li><a href="destination.html">Voyager</a></li>
 						<li><a href="pricing.html">Tarifs</a></li>
 						<li><a href="contact.html">Contact</a></li>
-					</ul>	
+					</ul>
 			</div>	
 		</div>
 	</nav>
@@ -95,7 +96,7 @@
 					<div class="adv-destination-info">
 						<h2>{{voyage.getName()}}</h2>
 						<p>{{voyage.getDesc()}}</p>
-						<button class="adv-btn">Rechercher un voyage</button>
+						<a href="{{ url_for('trip') }}"></a><button class="adv-btn">Rechercher un voyage</button></a>
 					</div>
 				</div>
                 {% endfor %}
