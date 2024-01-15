@@ -773,13 +773,13 @@ form label {
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: royalblue;
+  background-color: #09C6AB;
 }
 
 .title::before {
   width: 18px;
   height: 18px;
-  background-color: royalblue;
+  background-color: #09C6AB;
 }
 
 .title::after {
@@ -797,11 +797,11 @@ form label {
 }
 
 .signin a {
-  color: royalblue;
+  color: #09C6AB;
 }
 
 .signin a:hover {
-  text-decoration: underline royalblue;
+  text-decoration: underline #09C6AB;
 }
 
 .flex {
@@ -844,13 +844,13 @@ form label {
 }
 
 .form label .input:valid + span {
-  color: green;
+  color: #09C6AB;
 }
 
 .submit {
   border: none;
   outline: none;
-  background-color: royalblue;
+  background-color: #09C6AB;
   padding: 10px;
   border-radius: 10px;
   color: #fff;
@@ -859,7 +859,7 @@ form label {
 }
 
 .submit:hover {
-  background-color: rgb(56, 90, 194);
+  background-color: #09C6AB;
 }
 
 #register{
