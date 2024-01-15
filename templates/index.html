@@ -8,7 +8,6 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	
-	<!-- Theme style  -->
 	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
 
 	</head>
@@ -23,8 +22,8 @@
 					<ul>
 						<li><a href="destination.html">Destinations</a></li>
 						<li><a href="destination.html">Voyager</a></li>
-						<li><a href="pricing.html">Tarifs</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="/connexion">Login</a></li>
+						<li><a href="/inscription">S'inscrire</a></li>
 					</ul>
 			</div>	
 		</div>
@@ -34,51 +33,9 @@
 		<div class="overlay"></div>
 		<div class="adv-container">
 			<div class="row">
-				<h1>Découvrez le Monde tel que vous ne l'avez jamais fait !</h1>	
-				<div class="form-wrap">
-					<div class="tab">						
-						<div class="tab-content">
-							<div class="tab-content-inner active" data-content="signup">
-								<h3>Réservez votre voyage</h3>
-								<form action="#">
-									<div class="row">
-										<label for="fullname">Nom</label>
-										<input type="text" id="fullname" class="form-control">
-									</div>
-									<div class="row">
-										<label for="activities">Activités</label>
-											<select name="#" id="activities" class="form-control">
-												<option value="">Activités</option>
-												<option value="">Hiking</option>
-												<option value="">Caving</option>
-												<option value="">Swimming</option>
-											</select>
-									</div>
-									<div class="row form-group">
-										<label for="destination">Destination</label>
-											<select name="#" id="destination" class="form-control">
-												<option value="">Philippines</option>
-												<option value="">USA</option>
-												<option value="">Australie</option>
-												<option value="">Singapour</option>
-											</select>
-									</div>
-									
-									<div class="row form-group">
-										<label for="date-start">Date de départ</label>
-										<input type="text" id="date-start" class="form-control">
-
-									</div>
-
-									<div class="row form-group">
-										<input type="submit" class="btn btn-primary btn-block" value="Rechercher">
-
-									</div>
-								</form>	
-							</div>
-						</div>
-					</div>
-				</div>
+				<h1>Découvrez le Monde tel que vous ne l'avez jamais fait !</h1>
+				<p id="expertise">Notre expertise de la NSI vous permettra de voyager à travers le monde !</p>	
+				<button class="reserver">Réserver</button>
 			</div>
 		</div>
 	</header>
@@ -96,7 +53,7 @@
 					<div class="adv-destination-info">
 						<h2>{{voyage.getName()}}</h2>
 						<p>{{voyage.getDesc()}}</p>
-						<a href="{{ url_for('trip') }}"></a><button class="adv-btn">Rechercher un voyage</button></a>
+						<a href="{{ url_for('trip', dest_name=voyage.getName())}}"><button class="adv-btn">Rechercher un voyage</button></a>
 					</div>
 				</div>
                 {% endfor %}
@@ -161,20 +118,20 @@
 
 			<div class="row">
 				<div class="feature-center">
-						<span class="counter js-counter">1</span>
+						<span class="counter">1</span>
 						<span class="counter-label">Destinations</span>
 
 					</div>
 					<div class="feature-center">
-						<span class="counter js-counter">1</span>
+						<span class="counter">1</span>
 						<span class="counter-label">Activités</span>
 					</div>
 					<div class="feature-center">
-						<span class="counter js-counter">1</span>
+						<span class="counter">1</span>
 						<span class="counter-label">Voyageurs</span>
 					</div>
 					<div class="feature-center">
-						<span class="counter js-counter">1</span>
+						<span class="counter">1</span>
 						<span class="counter-label">Clients Satisfaits</span>
 
 					</div>

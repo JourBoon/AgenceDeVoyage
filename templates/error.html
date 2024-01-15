@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta lang="fr">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ADV - Erreur</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+
+	</head>
+	<body>
+	
+        <div id="page">
+
+            <nav class="adv-nav">
+                <div class="adv-container">	
+                    <div class="row">	
+                        <div id="adv-logo"><a href="/">AD<em>V</em></a></div>
+                            <ul>
+                                <li><a href="destination.html">Destinations</a></li>
+                                <li><a href="destination.html">Voyager</a></li>
+                                <li><a href="pricing.html">Tarifs</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                    </div>	
+                </div>
+            </nav>
+        
+            <header id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/2.jpg)">
+                <div class="overlay"></div>
+                <div class="adv-container">
+                    <div class="row">
+                        <h1>Une erreur est survenue lors de la récupération de votre voyage.</h1>
+                        <p id="expertise">Veuillez réessayer plus tard.</p>	
+                    </div>
+                </div>
+            </header>
+        </div>
+
+	</body>
+</html>
