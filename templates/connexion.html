@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<<<<<<< HEAD
 <html lang="fr">
 <head>
     <meta charset="utf-8">
@@ -60,3 +61,74 @@
     </div>
 </body>
 </html>
+=======
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta lang="fr">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ADV - Connexion</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_inscription.css') }}">
+
+	</head>
+	<body>
+	
+        <div id="page">
+
+            <nav class="adv-nav">
+                <div class="adv-container">	
+                    <div class="row">	
+                        <div id="adv-logo"><a href="/">AD<em>V</em></a></div>
+                            <ul>
+                                <li><a href="destination.html">Destinations</a></li>
+                                <li><a href="destination.html">Voyager</a></li>
+                                <li><a href="pricing.html">Tarifs</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                    </div>	
+                </div>
+            </nav>
+        
+            <header id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/1.jpg)">
+                <div class="overlay"></div>
+                <div class="adv-container" id="register">
+                    <div class="row-form">
+                        <form class="form">
+                        <p class="title">Se connecter </p>
+                        <p class="message">Connectez-vous dès maintenant pour retrouver vos voyages en un rien de temps. </p>
+                            <div class="flex">
+                            <label>
+                                <input required="" placeholder="" type="text" class="input">
+                                <span>Prénom</span>
+                            </label>
+                    
+                            <label>
+                                <input required="" placeholder="" type="text" class="input">
+                                <span>Nom</span>
+                            </label>
+                        </div>  
+                                
+                        <label>
+                            <input required="" placeholder="" type="email" class="input">
+                            <span>Email</span>
+                        </label> 
+                            
+                        <label>
+                            <input required="" placeholder="" type="password" class="input">
+                            <span>Mot de Passe</span>
+                        </label>
+                        <button class="submit">Se connecter</button>
+                        <p class="signin">Vous n'avez pas de compte ? <a href="/inscription">S'inscrire</a> </p>
+                    </form>
+                    </div>
+                    
+                </div>
+            </header>
+        </div>
+
+	</body>
+</html>
+>>>>>>> 1ad0627e806458fb7f6d72385bf99e49e9913e35
