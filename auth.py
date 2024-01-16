@@ -1,41 +1,33 @@
-import sys
-sys.path.append('static/services')
-sys.path.append('static/models')
-sys.path.append('static/services/exceptions')
-from app import app
-from flask import Flask, Blueprint, render_template, redirect, url_for, request, flash
-from werkzeug.security import generate_password_hash, check_password_hash
-from models import User
-from database import db
+from flask import Flask, render_template, request, redirect, url_for, session
 
-auth = Blueprint('auth', __name__)
+app = Flask(__name__)
+app.secret_key = 'votre_clé_secrète'
 
-@auth.route('/connexion')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('connexion.html')
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        remember = request.form.get('remember')
 
-@auth.route('/inscription')
-def signup():
-    return render_template('inscription.html')
+        # Vérifiez les informations d'identification (par exemple, dans une base de données)
 
-@auth.route('/inscription', methods=['POST'])
-def signup_post():
-    # code to validate and add user to database goes here
-    email = request.form.get('email')
-    name = request.form.get('username')
-    password = request.form.get('password')
+        # Si les informations d'identification sont valides, connectez l'utilisateur et stockez ses informations dans la session
+        session['username'] = username
 
-    user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
+        # Si l'utilisateur a demandé à se souvenir de lui, configurez un cookie sécurisé
+        if remember:
+            session.permanent = True
 
-    if user: # if a user is found, we want to redirect back to signup page so user can try again
-        flash('Email address already exists')
-        return redirect(url_for('auth.inscription'))
+        return redirect(url_for('accueil'))
 
-    # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-    new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
+    return render_template('login.html')
 
-    # add the new user to the database
-    db.session.add(new_user)
-    db.session.commit()
+@app.route('/accueil')
+def accueil():
+    # Obtenez les informations de l'utilisateur à partir de la session
+    username = session.get('username')
+    return render_template('accueil.html', username=username)
 
-    return redirect(url_for('auth.connexion'))
+if __name__ == '__main__':
+    app.run(debug=True)
