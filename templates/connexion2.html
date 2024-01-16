@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_connexion.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>ADV - Connexion</title>
+</head>
+<body>
+
+    <header id="header-top" class="header-top">
+        <ul>
+            <li class="header-top-contact">
+                <a href="/connexion">Se connecter</a>
+            </li>
+            <li class="header-top-contact">
+                <a href="/inscription">S'inscrire</a>
+            </li>
+        </ul>
+    </header>
+
+    <section class="navbar">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">AD<span>V</span></a>
+        </div>
+
+        <div class="navbar-menu" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class=" scroll"><a href="/">accueil</a></li>
+                <li class="scroll"><a href="/reserver">réserver</a></li>
+                <li class="scroll"><a href="/explore">explorer</a></li>
+                <li class="scroll"><a href="#reviews">avis</a></li>
+                <li class="scroll"><a href="#blog">blog</a></li>
+                <li class="scroll"><a href="#contact">contact</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="connection-section" style="background-image: url('../static/images/banner.jpg')">
+        <div class="overlay"></div>
+        <div class="connection-content">
+            <h1>Connectez-vous</h1>
+            
+            
+            <form>
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Se connecter</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>

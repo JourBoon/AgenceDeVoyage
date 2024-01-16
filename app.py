@@ -19,7 +19,10 @@ voyageDAO = VoyageDAO()
 
 @app.route('/')
 def home():
-    return render_template("index.html")
+    destinations = db_utils.fetch("SELECT nom_dest, desc_dest, cost FROM DESTINATION")
+    column_names = [column[0] for column in db_utils.local.cur.description]
+    destinations_objects = [voyageDAO.toDestination(value, column_names) for value in destinations]
+    return render_template("index.html", voyages=destinations_objects)
 
 @app.route('/reserver')
 def reserver():
