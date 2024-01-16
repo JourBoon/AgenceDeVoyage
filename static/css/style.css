@@ -7,6 +7,10 @@ body {
   background: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 #page {
   position: relative;
   overflow-x: hidden;
