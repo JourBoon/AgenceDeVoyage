@@ -55,7 +55,5 @@ def trip():
     else:
         return render_template("error.html", message="Paramètre manquant dans l'URL")
 
-def data_tri():
-    
 if __name__ == '__main__':
     app.run(debug=True)
