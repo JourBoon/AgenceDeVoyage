@@ -8,63 +8,31 @@
     <title>ADV - Inscription</title>
 </head>
 <body>
-
-    <header id="header-top" class="header-top">
-        <ul>
-            <li class="header-top-contact">
-                <a href="/connexion">Se connecter</a>
-            </li>
-            <li class="header-top-contact">
-                <a href="/inscription">S'inscrire</a>
-            </li>
-        </ul>
-    </header>
-
-    <section class="navbar">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">AD<span>V</span></a>
-        </div>
-
-        <div class="navbar-menu" id="navbar-menu">
-            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                <li class=" scroll"><a href="/">accueil</a></li>
-                <li class="scroll"><a href="/reserver">réserver</a></li>
-                <li class="scroll"><a href="/explore">explorer</a></li>
-                <li class="scroll"><a href="#reviews">avis</a></li>
-                <li class="scroll"><a href="#blog">blog</a></li>
-                <li class="scroll"><a href="#contact">contact</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="registration-section" style="background-image: url('../static/images/banner.jpg')">
-        <div class="overlay"></div>
-        <div class="registration-content">
-            data-in="heroFadeInDown" data-out="heroFadeOutUp">
-            <h1>Inscrivez-vous</h1>
-            
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="notification is-danger">
-                    {{ messages[0] }}. Go to <a href="{{ url_for('auth.connexion') }}">Se connecter</a>.
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Sign Up</h3>
+    <div class="box">
+        <form method="POST" action="{{ url_for('auth.signup_post') }}">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
                 </div>
-            {% endif %}
-            {% endwith %}
+            </div>
 
-            <form method="POST" action="/inscription">
-                <label for="username">Nom d'utilisateur:</label>
-                <input type="text" id="username" name="username" required>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
+                </div>
+            </div>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="password" name="password" placeholder="Password">
+                </div>
+            </div>
 
-                <label for="password">Mot de passe:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">S'inscrire</button>
-            </form>
-        </div>
-    </section>
-
+            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

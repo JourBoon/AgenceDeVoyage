@@ -1,71 +1,62 @@
 <!DOCTYPE HTML>
 <html lang="fr">
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ADV - France</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ADV - France</title>
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-	
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+</head>
+<body>
+    <div id="page">
+        <nav class="adv-nav">
+            <div class="adv-container">
+                <div class="row">
+                    <div id="adv-logo"><a href="/">AD<em>V</em></a></div>
+                    <ul>
+                        <li><a href="destination.html">Destinations</a></li>
+                        <li><a href="destination.html">Voyager</a></li>
+                        <li><a href="pricing.html">Tarifs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/img_bg_3.jpg)">
+            <div class="overlay"></div>
+            <div class="adv-container">
+                <div class="row">
+                    <h1>Connectez-vous à votre compte</h1>
+                    <div class="form-wrap">
+                        <div class="tab">
+                            <div class="tab-content">
+                                <div class="tab-content-inner active" data-content="login">
+									<h3>Connexion</h3>
+									<form action="{{ url_for('auth.login') }}" method="post">
+                                        <div class="row">
+                                            <label for="username">Nom d'utilisateur</label>
+                                            <input type="text" id="username" name="username" class="form-control">
+                                        </div>
+                                        <div class="row">
+                                            <label for="password">Mot de passe</label>
+                                            <input type="password" id="password" name="password" class="form-control">
+                                        </div>
+                                        <div class="row form-group">
+                                            <input type="submit" class="btn btn-primary btn-block" value="Se connecter">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</head>
-	<body>
-	
-	<div id="page">
-
-	<nav class="adv-nav">
-		<div class="adv-container">	
-			<div class="row">	
-				<div id="adv-logo"><a href="/">AD<em>V</em></a></div>
-					<ul>
-						<li><a href="destination.html">Destinations</a></li>
-						<li><a href="destination.html">Voyager</a></li>
-						<li><a href="pricing.html">Tarifs</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-			</div>	
-		</div>
-	</nav>
-	
-	<header id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/img_bg_3.jpg)">
-		<div class="overlay"></div>
-		<div class="adv-container">
-			<div class="row">
-				<h1>Connectez-vous à votre compte</h1>	
-				<div class="form-wrap">
-					<div class="tab">						
-						<div class="tab-content">
-							<div class="tab-content-inner active" data-content="login">
-								<h3>Connectez-vous</h3>
-								<form action="{{ url_for('login') }}" method="POST">
-									<div class="row">
-										<label for="username">Nom d'utilisateur</label>
-										<input type="text" id="username" name="username" class="form-control" required>
-									</div>
-									<div class="row">
-										<label for="password">Mot de passe</label>
-										<input type="password" id="password" name="password" class="form-control" required>
-									</div>
-									<div class="row form-group">
-										<input type="checkbox" id="remember" name="remember"> <label for="remember">Se souvenir de moi</label>
-									</div>
-									<div class="row form-group">
-										<input type="submit" class="btn btn-primary btn-block" value="Se connecter">
-									</div>
-								</form>	
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-	
-
-
-	</div>
-
-	</body>
+    </div>
+</body>
 </html>

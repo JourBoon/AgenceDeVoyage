@@ -1,33 +1,32 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, redirect, url_for, request, flash
+from werkzeug.security import generate_password_hash, check_password_hash
+from .models import User
+from . import db
 
-app = Flask(__name__)
-app.secret_key = 'votre_clé_secrète'
+auth = Blueprint('auth', __name__)
 
-@app.route('/login', methods=['GET', 'POST'])
+@auth.route('/login')
 def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        remember = request.form.get('remember')
+    return render_template('connexion.html')
 
-        # Vérifiez les informations d'identification (par exemple, dans une base de données)
+@auth.route('/signup')
+def signup():
+    return render_template('inscription.html')
 
-        # Si les informations d'identification sont valides, connectez l'utilisateur et stockez ses informations dans la session
-        session['username'] = username
+@auth.route('/signup', methods=['POST'])
+def signup_post():
+    email = request.form.get('email')
+    name = request.form.get('name')
+    password = request.form.get('password')
+    user = User.query.filter_by(email=email).first() # On vérifie si un user existe avec ce compte
+    if user: # Si il a un compte
+        flash('Il existe déjà un compte avec cette adresse mail')
+        return redirect(url_for('auth.login')) #On le renvoie a la page pour se connecter
+    new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
+    db.session.add(new_user)
+    db.session.commit()
+    return redirect(url_for('auth.login'))
 
-        # Si l'utilisateur a demandé à se souvenir de lui, configurez un cookie sécurisé
-        if remember:
-            session.permanent = True
-
-        return redirect(url_for('accueil'))
-
-    return render_template('login.html')
-
-@app.route('/accueil')
-def accueil():
-    # Obtenez les informations de l'utilisateur à partir de la session
-    username = session.get('username')
-    return render_template('accueil.html', username=username)
-
-if __name__ == '__main__':
-    app.run(debug=True)
+@auth.route('/logout')
+def logout():
+    return 'Logout'
