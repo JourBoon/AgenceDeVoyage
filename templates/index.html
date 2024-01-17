@@ -22,8 +22,13 @@
 					<ul>
 						<li><a href="#destinations">Destinations</a></li>
 						<li><a href="destination.html">Voyager</a></li>
-						<li><a href="/connexion">Login</a></li>
-						<li><a href="/inscription">S'inscrire</a></li>
+						{% if isLogged == False%}
+							<li><a href="/connexion">Login</a></li>
+							<li><a href="/inscription">S'inscrire</a></li>
+						{% else %}
+							<li><a href="/dashboard">Mon Compte</a></li>
+							<li><a href="/inscription">Logout</a></li>
+						{% endif %}
 					</ul>
 			</div>	
 		</div>
@@ -118,20 +123,20 @@
 
 			<div class="row">
 				<div class="feature-center">
-						<span class="counter">1</span>
+						<span class="counter">0</span>
 						<span class="counter-label">Destinations</span>
 
 					</div>
 					<div class="feature-center">
-						<span class="counter">1</span>
+						<span class="counter">0</span>
 						<span class="counter-label">Activités</span>
 					</div>
 					<div class="feature-center">
-						<span class="counter">1</span>
+						<span class="counter">0</span>
 						<span class="counter-label">Voyageurs</span>
 					</div>
 					<div class="feature-center">
-						<span class="counter">1</span>
+						<span class="counter">0</span>
 						<span class="counter-label">Clients Satisfaits</span>
 
 					</div>

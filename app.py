@@ -1,12 +1,13 @@
 import sys
+import os
 sys.path.append('static/services')
 sys.path.append('static/models')
 sys.path.append('static/services/exceptions')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, 'database/database.db')
 
 from flask import Flask
 from flask import render_template, request, g, Blueprint, render_template, redirect, url_for, request, flash
-from flask_login import LoginManager, login_user, logout_user, current_user, login_required
-from werkzeug.security import generate_password_hash, check_password_hash
 from static.services.DBUtils import DBUtils
 from static.models.VoyageDAO import VoyageDAO
 from static.models.client import Client
@@ -14,14 +15,13 @@ from static.models.client import Client
 print("Imports successfully instanciated")
 
 app = Flask(__name__ ,template_folder='templates', static_folder='static')
+app.secret_key = '123456789'
 
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
-
-db_utils = DBUtils("database/database.db")
+db_utils = DBUtils(db_path)
 db_utils.connect()
 
-auth = Blueprint('auth', __name__)
+#L'absence d'hébergement nous permet de simplement utiliser une variable
+# pour l'authentification.
 isLogged = False
 
 voyageDAO = VoyageDAO()
@@ -56,41 +56,61 @@ def trip():
     else:
         return render_template("error.html", message="Paramètre manquant dans l'URL")
 
-@app.route('/connexion', methods=['POST'])
+@app.route('/connexion')
 def login():
+    print("YIIIIOUGUUUGUGU")
+    return render_template("connexion.html", isLogged=isLogged)
+
+@app.route('/connexion', methods=['GET', 'POST'])
+def login_post():
     client = voyageDAO.getClientByEmail(request.form.get('email'))
-    if client and request.form.get("email") == client.getMail() and request.form.get("mdp") == client.getMdp():
+    print(client.getMdp())
+    print(request.form.get("mdp"))
+    if client and request.form.get("mdp") == client.getMdp():
+        # Authentification réussie
+        print("TOUTOUTOUTOUT")
         isLogged = True
         return redirect(url_for('dashboard'))
     else:
+        # Authentification échouée
+        print("MINNNCE PTNNN DE MERDE")
         flash('Nom d\'utilisateur ou mot de passe incorrect')
         return redirect(url_for('login'))
 
-    return render_template('connexion.html')
+@app.route('/dashboard')
+def dashboard():
+    # Votre logique pour la page du tableau de bord ici
+    return 'Tableau de bord'
+
 @app.route('/inscription')
 def signup():
+    destinations = db_utils.fetch("SELECT * FROM CLIENT")
+    print(destinations)
     return render_template('inscription.html')
 
-@app.route('/inscription', methods=['POST'])
+@app.route('/inscription', methods=['GET', 'POST'])
 def signup_post():
     email = request.form.get('email')
-    print("SELECT mail FROM CLIENT WHERE mail = ?", (email,))
     users = db_utils.fetch("SELECT mail FROM CLIENT WHERE mail = ?", (email,))
-    #user = Client.query.filter_by(email=email).first()
     if users:
         flash('Il existe déjà un compte avec cette adresse mail')
         return redirect(url_for('login'))
     new_client_query = """
-    INSERT INTO CLIENT (prenom, nom, age, adresse, mail, tel_num)
-    VALUES (?, ?, ?, ?, ?, ?)
+    INSERT INTO CLIENT (id_client, prenom, nom, age, adresse, mail, mdp, tel_num)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """
 
+    clients_id = db_utils.fetch("SELECT * FROM CLIENT")
+    num_client = len(clients_id)
+
     new_client_data = (
+        num_client+1,
         request.form.get('prenom'),
         request.form.get('nom'),
         request.form.get('age'),
         request.form.get('adresse'),
         email,
+        request.form.get('password'),
         request.form.get('tel_num')
     )
 

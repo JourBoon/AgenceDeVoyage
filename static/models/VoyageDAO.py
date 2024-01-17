@@ -2,6 +2,9 @@ from static.models.voyage import Voyage
 from static.models.destination import Destination
 from static.models.client import Client
 from static.services.DBUtils import DBUtils
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, 'database/database.db')
 
 class VoyageDAO:
 
@@ -12,8 +15,8 @@ class VoyageDAO:
     def toVoyage(self, dataset):
         return Voyage(dataset)
     
-    def toClient(self, dataset):
-        return Client(dataset)
+    def toClient(self, dataset, column_names):
+        return Client(dataset, column_names)
 
     def toDestination(self, dataset, column_names):
         return Destination(dataset, column_names)
@@ -26,7 +29,7 @@ class VoyageDAO:
         column_names = [column[0] for column in self.db_utils.local.cur.description]
 
         if result:
-            voyage = self.Client(result, column_names)
+            voyage = self.toClient(result, column_names)
             return voyage
         else:
             return None

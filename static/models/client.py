@@ -1,30 +1,30 @@
 class Client:
-    def __init__(self, dataset):
-        self.dataset = dataset
+    def __init__(self, dataset, column_names):
+        self.data_dict = dict(zip(column_names, dataset))
 
     def getID(self):
-        return self.dataset.get("id_client", None)
+        return self.data_dict.get("id_client", None)
     
     def getFirstName(self):
-        return self.dataset.get("prenom", None)
+        return self.data_dict.get("prenom", None)
     
     def getLastName(self):
-        return self.dataset.get("nom", None)
+        return self.data_dict.get("nom", None)
     
     def getAge(self):
-        return self.dataset.get("age", None)
+        return self.data_dict.get("age", None)
     
     def getAddress(self):
-        return self.dataset.get("address", None)
+        return self.data_dict.get("address", None)
 
     def getMail(self):
-        return self.dataset.get("mail", None)
+        return self.data_dict.get("mail", None)
     
     def getMdp(self):
-        return self.dataset.get("mdp", None)
+        return self.data_dict.get("mdp", None)
 
     def getTelNum(self):
-        return self.dataset.get("tel_num", None)
+        return self.data_dict.get("tel_num", None)
 
     def getValue(self, value):
-        return self.dataset.get(value, None)
+        return self.data_dict.get(value, None)

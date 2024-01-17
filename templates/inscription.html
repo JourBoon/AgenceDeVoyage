@@ -1,38 +1,78 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_inscription.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>ADV - Inscription</title>
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta lang="fr">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ADV - Inscription</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_inscription.css') }}">
 </head>
 <body>
-<div class="column is-4 is-offset-4">
-    <h3 class="title">Sign Up</h3>
-    <div class="box">
-        <form method="POST" action="{{ url_for('signup_post') }}">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
-                </div>
-            </div>
 
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
-                </div>
-            </div>
+    <div id="page">
 
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
-                </div>
+        <nav class="adv-nav">
+            <div class="adv-container">	
+                <div class="row">	
+                    <div id="adv-logo"><a href="/">AD<em>V</em></a></div>
+                        <ul>
+                            <li><a href="destination.html">Destinations</a></li>
+                            <li><a href="destination.html">Voyager</a></li>
+                            <li><a href="pricing.html">Tarifs</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                </div>	
             </div>
+        </nav>
 
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
-        </form>
+        <header id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/1.jpg)">
+            <div class="overlay"></div>
+            <div class="adv-container" id="register">
+                <div class="row-form">
+                    <form method="POST" action="{{ url_for('signup_post') }}" class="form">
+                        <p class="title">S'inscrire </p>
+                        <p class="message">Inscrivez-vous dès maintenant pour retrouver vos voyages en un rien de temps. </p>
+                        <div class="flex">
+                            <label>
+                                <input required="" placeholder="" id="prenom" name="prenom" type="text" class="input">
+                                <span>Prénom</span>
+                            </label>
+                            <label>
+                                <input required="" placeholder="" id="nom" name="nom" type="text" class="input">
+                                <span>Nom</span>
+                            </label>
+                        </div>  
+                        <label>
+                            <input required="" placeholder="" id="age" name="age" type="text" class="input">
+                            <span>Age</span>
+                        </label>
+                        <label>
+                            <input required="" placeholder="" id="email" name="email" type="email" class="input">
+                            <span>Email</span>
+                        </label> 
+                        <label>
+                            <input required="" placeholder="" id="tel_num" name="tel_num" type="tel" class="input">
+                            <span>Telephone</span>
+                        </label> 
+                        <label>
+                            <input required="" placeholder="" id="password" name="password" type="password" class="input">
+                            <span>Mot de Passe</span>
+                        </label>
+                        <label>
+                            <input required="" placeholder="" name="confirm_password" type="password" class="input">
+                            <span>Confirmez mot de passe</span>
+                        </label>
+                        <button class="submit">S'inscrire</button>
+                        <p class="signin">Vous avez déjà un compte ? <a href="/connexion">Login</a> </p>
+                    </form>
+                </div>
+
+            </div>
+        </header>
     </div>
-</div>
+
 </body>
 </html>
+
