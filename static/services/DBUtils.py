@@ -1,6 +1,6 @@
 import sqlite3
 import threading
-from RequestExecutionException import RequestExecutionException
+from static.services.exceptions.RequestExecutionException import RequestExecutionException
 
 class DBUtils:
     def __init__(self, url):
@@ -45,8 +45,8 @@ class DBUtils:
     def multiInsert(self, request, dataSet):
         self.multiExecute(request, dataSet)
 
-    def fetch(self, request):
-        return self.execute(request)
+    def fetch(self, request, args=None):
+        return self.execute(request, args=args)
     
     def fetch_one(self, request, args=None):
         return self.execute(request, args=args, fetch_one=True)
