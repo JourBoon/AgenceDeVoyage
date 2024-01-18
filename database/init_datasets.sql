@@ -5,6 +5,7 @@ CREATE TABLE CLIENT (
     age INTEGER,
     adresse TEXT,
     mail TEXT,
+    mdp TEXT,
     tel_num INT
 );
 

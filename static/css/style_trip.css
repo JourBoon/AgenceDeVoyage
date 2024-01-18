@@ -744,11 +744,11 @@ form label {
 }
 
 .card {
-  width: 220px;
-  height: 260px;
+  width: 350px;
+  height: 380px;
   border-radius: 50px;
   background: #f9fffe;
-  font-size: 20px ;
+  font-size: 30px ;
   display: inline-block;
  }
 
