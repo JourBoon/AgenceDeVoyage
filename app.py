@@ -21,7 +21,7 @@ db_utils = DBUtils(db_path)
 db_utils.connect()
 
 #L'absence d'hébergement sur un serveur web nous permet de simplement utiliser une variable
-# pour l'authentification.
+# pour l'authentification. -> isLogged
 isLogged = False
 session = None
 
@@ -84,8 +84,6 @@ def dashboard():
 
 @app.route('/inscription')
 def signup():
-    destinations = db_utils.fetch("SELECT * FROM CLIENT")
-    print(destinations)
     return render_template('inscription.html')
 
 @app.route('/inscription', methods=['GET', 'POST'])

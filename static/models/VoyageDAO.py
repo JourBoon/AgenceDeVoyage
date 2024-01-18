@@ -6,6 +6,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(BASE_DIR, 'database/database.db')
 
+"""
+Classe VoyageDAO: Data Access Object. Ensemble de patrons
+    permettant la récupération des objets direct en transformant
+    les données récupérées depuis une requête à la base de donnée.
+    Les objets créés sont utilisé à travers l'injection des pages html.
+"""
 class VoyageDAO:
 
     def __init__(self) -> None:
@@ -13,15 +19,28 @@ class VoyageDAO:
         pass
 
     def toVoyage(self, dataset):
+        """
+        Convertir le dataset en objet Voyage.
+        """
         return Voyage(dataset)
     
     def toClient(self, dataset, column_names):
+        """
+        Convertir le dataset en objet Client.
+        """
         return Client(dataset, column_names)
 
     def toDestination(self, dataset, column_names):
+        """
+        Convertir le dataset en objet Destination.
+        """
         return Destination(dataset, column_names)
     
     def getClientByEmail(self, email):
+        """
+        Récupère un objet client à partir d'une email si existant dans 
+        la base de donnée. Le cas échéant -> None.
+        """
         query = "SELECT * FROM CLIENT WHERE mail = ?"
         params = (email,)
 
@@ -35,6 +54,10 @@ class VoyageDAO:
             return None
 
     def getDestinationByName(self, voyage_name):
+        """
+        Récupère un objet Destination à partir d'une email si existant dans 
+        la base de donnée. Le cas échéant -> None.
+        """
         query = "SELECT * FROM DESTINATION WHERE nom_dest = ?"
         params = (voyage_name,)
 
