@@ -4,11 +4,11 @@
 	<meta charset="utf-8">
 	<meta lang="fr">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ADV - France</title>
+	<title>ADV - Dashboard {{session.getFirstName()}}</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	
-	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_trip.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_dashboard.css') }}">
 
 	</head>
 	<body>
@@ -19,31 +19,15 @@
 				<div class="adv-container">	
 					<div class="row">	
 						<div id="adv-logo"><a href="/">AD<em>V</em></a></div>
-							<ul>
-								<li><a href="destination.html">Destinations</a></li>
-								<li><a href="destination.html">Voyager</a></li>
-								<li><a href="pricing.html">Tarifs</a></li>
-								<li><a href="contact.html">Contact</a></li>
-							</ul>
 					</div>	
 				</div>
 			</nav>
 		
-			<header id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/3.jpg)">
+			<header id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/img_bg_2.jpg)">
 				<div class="overlay"></div>
 				<div class="adv-container">
-					<div class="row">
-						<h1>{{destination.getName()}}</h1>
-						<p id="expertise">{{destination.getDesc()}}</p>	
-						
-					</div>
-
-					<div class="card"> 
-						<p>Prix :{{destination.getCost()}} €</p>
-						<p> Nombres de places : {{destination.getPlaces()}}</p>
-						<p> Durée du vol : {{destination.getDuration()}} min</p>
-						<button class="trip-button"> Réserver votre vol !  </button>
-					</div>
+					<h1>Bonjour {{session.getFirstName()}}</h1>
+					<p id="expertise">Vous retrouverez ici toutes vos réservations !</p>	
 				</div>
 			</header>
 			
