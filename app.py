@@ -115,6 +115,9 @@ def signup_post():
     db_utils.execute(new_client_query, new_client_data)
     return redirect(url_for('login'))
 
+@app.route('/trip', methods=['GET', 'POST'])
+def reserver_post():
+    return redirect(url_for('dashboard'))
 
 @app.route('/logout')
 def logout():

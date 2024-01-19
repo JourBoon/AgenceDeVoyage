@@ -38,11 +38,22 @@
 						
 					</div>
 
-					<div class="card"> 
+					<div class="card">
 						<p>Prix :{{destination.getCost()}} €</p>
 						<p> Nombres de places : {{destination.getPlaces()}}</p>
 						<p> Durée du vol : {{destination.getDuration()}} min</p>
-						<button class="trip-button"> Réserver votre vol !  </button>
+						{% if not isLogged%}
+							<a href="/connexion"><button class="trip-button"> Réserver votre vol !  </button></a>
+						{% else %}
+							{% if session %}
+								<form method="POST" action="{{ url_for('reserver_post') }}" class="form">
+								<a href="/connexion"><button class="trip-button"> Réserver votre vol !  </button></a>
+								</form>
+							{% else %}
+								<a href="/error"><button class="trip-button"> Réserver votre vol !  </button></a>
+							{% endif %}
+								<a href="/inscription"><button class="trip-button"> Réserver votre vol !  </button></a>
+						{% endif %}
 					</div>
 				</div>
 			</header>
