@@ -20,10 +20,17 @@
                     <div class="row">	
                         <div id="adv-logo"><a href="/">AD<em>V</em></a></div>
                             <ul>
-                                <li><a href="destination.html">Destinations</a></li>
-                                <li><a href="destination.html">Voyager</a></li>
-                                <li><a href="pricing.html">Tarifs</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+						{% if not isLogged%}
+							<li><a href="/connexion">Login</a></li>
+							<li><a href="/inscription">S'inscrire</a></li>
+						{% else %}
+							{% if session %}
+								<li><a href="/dashboard">{{session.getFirstName()}}</a></li>
+							{% else %}
+								<li><a href="/connexion">Login</a></li>
+							{% endif %}
+							<li><a href="/logout">Logout</a></li>
+						{% endif %}
                             </ul>
                     </div>	
                 </div>
@@ -33,7 +40,7 @@
                 <div class="overlay"></div>
                 <div class="adv-container">
                     <div class="row">
-                        <h1>Une erreur est survenue lors de la récupération de votre voyage.</h1>
+                        <h1>Une erreur est survenue : {{message}}.</h1>
                         <p id="expertise">Veuillez réessayer plus tard.</p>	
                     </div>
                 </div>

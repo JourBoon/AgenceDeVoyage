@@ -3,11 +3,13 @@ import os
 sys.path.append('static/services')
 sys.path.append('static/models')
 sys.path.append('static/services/exceptions')
+
+#Donner les droits à l'interpréteur d'accéder à la base de donnée.
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(BASE_DIR, 'database/database.db')
 
 from flask import Flask
-from flask import render_template, request, g, Blueprint, render_template, redirect, url_for, request, flash
+from flask import render_template, request, render_template, redirect, url_for, request, flash
 from static.services.DBUtils import DBUtils
 from static.models.VoyageDAO import VoyageDAO
 from static.models.client import Client
@@ -29,22 +31,17 @@ voyageDAO = VoyageDAO()
 
 @app.route('/')
 def home():
+    clients_id = db_utils.fetch("SELECT * FROM CLIENT")
+    num_client = len(clients_id)
+    dests_id = db_utils.fetch("SELECT * FROM DESTINATION")
+    num_dests = len(dests_id)
+    acts_id = db_utils.fetch("SELECT * FROM ACTIVITE")
+    num_acts = len(acts_id)
     destinations = db_utils.fetch("SELECT nom_dest, desc_dest, cost FROM DESTINATION")
     column_names = [column[0] for column in db_utils.local.cur.description]
     destinations_objects = [voyageDAO.toDestination(value, column_names) for value in destinations]
     return render_template("index.html", voyages=destinations_objects, isLogged=isLogged
-                        , session=session)
-
-@app.route('/reserver')
-def reserver():
-    return render_template("reserver.html")
-
-@app.route('/explore')
-def explorer():
-    destinations = db_utils.fetch("SELECT nom_dest, desc_dest, cost FROM DESTINATION")
-    column_names = [column[0] for column in db_utils.local.cur.description]
-    destinations_objects = [voyageDAO.toDestination(value, column_names) for value in destinations]
-    return render_template("explorer.html", voyages=destinations_objects)
+                        , session=session, clients=num_client, dests=num_dests, acts=num_acts)
 
 @app.route('/trip')
 def trip():
@@ -54,7 +51,39 @@ def trip():
         if destinaton:
             return render_template("trip.html", destination=destinaton, isLogged = isLogged, session = session)
         else:
-            return render_template("error.html", message="Destination non trouvé")
+            return render_template("error.html", message="Destination non trouvée")
+    else:
+        return render_template("error.html", message="Paramètre manquant dans l'URL")
+    
+@app.route('/confirm')
+def confirm():
+    dest_name = request.args.get('dest_name')
+    if dest_name:
+        destination = voyageDAO.getDestinationByName(dest_name)
+        if destination:
+            users = db_utils.fetch("SELECT mail FROM CLIENT WHERE mail = ?", (session.getMail(),))
+            if users:
+                flash('Impossible de récupérer le compte.')
+                return redirect(url_for('login'))
+            new_res_query = """
+            INSERT INTO RESERVATION (id_res, id_client, id_dest, cost)
+            VALUES (?, ?, ?, ?)
+            """
+
+            res_id = db_utils.fetch("SELECT * FROM RESERVATION")
+            num_res = len(res_id)
+
+            new_res_data = (
+                num_res+1,
+                session.getID(),
+                destination.getID(),
+                destination.getCost()
+            )
+
+            db_utils.execute(new_res_query, new_res_data)
+            return redirect(url_for('dashboard'))
+        else:
+            return render_template("error.html", message="Destination non trouvée")
     else:
         return render_template("error.html", message="Paramètre manquant dans l'URL")
     
@@ -121,12 +150,12 @@ def signup_post():
     db_utils.execute(new_client_query, new_client_data)
     return redirect(url_for('login'))
 
-@app.route('/login')
+@app.route('/logout')
 def logout():
     global isLogged, session
     isLogged = False
     session = None
-    return redirect(url_for('/login'))
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)

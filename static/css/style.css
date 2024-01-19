@@ -73,11 +73,6 @@ h1, h2, h3, h4, h5, h6, figure {
   z-index: 1001;
   text-decoration: none;
 }
-@media screen and (max-width: 768px) {
-  .adv-nav {
-    padding: 20px 0;
-  }
-}
 .adv-nav #adv-logo {
   font-size: 20px;
   margin: 0;
@@ -91,11 +86,6 @@ h1, h2, h3, h4, h5, h6, figure {
 .adv-nav a {
   padding: 5px 10px;
   color: #fff;
-}
-@media screen and (max-width: 768px) {
-  .adv-nav .menu-1, .adv-nav .menu-2 {
-    display: none;
-  }
 }
 .adv-nav ul {
   padding: 0;
@@ -119,71 +109,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .adv-nav ul li a:hover, .adv-nav ul li a:focus, .adv-nav ul li a:active {
   color: white;
 }
-.adv-nav ul li.has-dropdown {
-  position: relative;
-}
-.adv-nav ul li.has-dropdown .dropdown {
-  width: 130px;
-  -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
-  z-index: 1002;
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  top: 40px;
-  left: 0;
-  text-align: left;
-  background: #fff;
-  padding: 20px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-transition: 0s;
-  -o-transition: 0s;
-  transition: 0s;
-}
-.adv-nav ul li.has-dropdown .dropdown:before {
-  bottom: 100%;
-  left: 40px;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-bottom-color: #fff;
-  border-width: 8px;
-  margin-left: -8px;
-}
-.adv-nav ul li.has-dropdown .dropdown li {
-  display: block;
-  margin-bottom: 7px;
-}
-.adv-nav ul li.has-dropdown .dropdown li:last-child {
-  margin-bottom: 0;
-}
-.adv-nav ul li.has-dropdown .dropdown li a {
-  padding: 2px 0;
-  display: block;
-  color: #999999;
-  line-height: 1.2;
-  text-transform: none;
-  font-size: 15px;
-}
-.adv-nav ul li.has-dropdown .dropdown li a:hover {
-  color: #09C6AB;
-}
-.adv-nav ul li.has-dropdown .dropdown li.active > a {
-  color: #000;
-}
-.adv-nav ul li.has-dropdown:hover a, .adv-nav ul li.has-dropdown:focus a {
-  color: #fff;
-}
-.adv-nav ul li.btn-cta a {
-  color: #09C6AB;
-}
+
 .adv-nav ul li.btn-cta a span {
   border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 4px 20px;
@@ -211,32 +137,12 @@ h1, h2, h3, h4, h5, h6, figure {
 #adv-header {
   background: #4d4d4d;
 }
-@media screen and (max-width: 992px) {
-  #adv-header.adv-cover {
-    height: inherit;
-    padding: 3em 0;
-  }
-}
-@media screen and (max-width: 480px) {
-  #adv-header .text-left {
-    text-align: center;
-  }
-}
-@media screen and (max-width: 480px) {
-  #adv-header .btn {
-    display: block;
-    width: 100%;
-  }
-}
+
 #adv-header .mt-text {
   margin-top: 7em;
   margin-bottom: 3em;
 }
-@media screen and (max-width: 768px) {
-  #adv-header .mt-text {
-    margin-top: 0;
-  }
-}
+
 #adv-header .intro-text-small {
   font-size: 14px;
   text-transform: uppercase;
@@ -258,13 +164,7 @@ h1, h2, h3, h4, h5, h6, figure {
   line-height: 1.5;
   font-weight: 300;
 }
-@media screen and (max-width: 768px) {
-  #adv-header h1 {
-    font-size: 34px;
-    line-height: 1.2;
-    margin-bottom: 10px;
-  }
-}
+
 #adv-header h2 {
   font-weight: 300;
   font-size: 22px;
@@ -357,66 +257,35 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative;
   z-index: 10;
 }
-@media screen and (max-width: 768px) {
-  .adv-cover {
-    height: 600px;
-  }
-}
+
 .adv-cover .display-t,
 .adv-cover .display-tc {
   height: 900px;
   display: table;
   width: 100%;
 }
-@media screen and (max-width: 768px) {
-  .adv-cover .display-t,
-  .adv-cover .display-tc {
-    height: 600px;
-  }
-}
+
 .adv-cover.adv-cover-sm {
   height: 600px;
 }
-@media screen and (max-width: 768px) {
-  .adv-cover.adv-cover-sm {
-    height: 400px;
-  }
-}
+
 .adv-cover.adv-cover-sm .display-t,
 .adv-cover.adv-cover-sm .display-tc {
   height: 600px;
   display: table;
   width: 100%;
 }
-@media screen and (max-width: 768px) {
-  .adv-cover.adv-cover-sm .display-t,
-  .adv-cover.adv-cover-sm .display-tc {
-    height: 400px;
-  }
-}
+
 .adv-cover.adv-cover-xs {
   height: 500px;
 }
-@media screen and (max-width: 768px) {
-  .adv-cover.adv-cover-xs {
-    height: inherit;
-    padding: 3em 0;
-  }
-}
+
 .adv-cover.adv-cover-xs .display-t,
 .adv-cover.adv-cover-xs .display-tc {
   height: 500px;
   display: table;
   width: 100%;
 }
-@media screen and (max-width: 768px) {
-  .adv-cover.adv-cover-xs .display-t,
-  .adv-cover.adv-cover-xs .display-tc {
-    padding: 3em 0;
-    height: inherit;
-  }
-}
-
 
 form label {
   font-weight: normal;
@@ -455,15 +324,7 @@ form label {
   line-height: 1.5;
   font-weight: 300;
 }
-@media screen and (max-width: 768px) {
-  #adv-header .display-tc h1,
-  #adv-counter .display-tc h1,
-  .adv-cover .display-tc h1 {
-    font-size: 34px;
-    line-height: 1.2;
-    margin-bottom: 10px;
-  }
-}
+
 #adv-header .display-tc h2,
 #adv-counter .display-tc h2,
 .adv-cover .display-tc h2 {
@@ -573,11 +434,7 @@ form label {
   width: 100%;
   margin-bottom: 40px;
 }
-@media screen and (max-width: 768px) {
-  .feature-center {
-    margin-bottom: 50px;
-  }
-}
+
 .feature-center .icon {
   width: 90px;
   height: 90px;
@@ -621,11 +478,7 @@ form label {
   color: #000;
   position: relative;
 }
-@media screen and (max-width: 768px) {
-  .adv-heading h2 {
-    font-size: 26px;
-  }
-}
+
 .adv-heading p {
   font-size: 20px;
   line-height: 1.5;
