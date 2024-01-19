@@ -117,7 +117,7 @@ def signup_post():
 
 @app.route('/trip', methods=['GET', 'POST'])
 def reserver_post():
-    return redirect(url_for('dashboard'))
+    return redirect(url_for('/'))
 
 @app.route('/logout')
 def logout():

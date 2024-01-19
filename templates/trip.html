@@ -1,64 +1,62 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-	<meta charset="utf-8">
-	<meta lang="fr">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ADV - France</title>
+	<!DOCTYPE HTML>
+	<html>
+		<head>
+		<meta charset="utf-8">
+		<meta lang="fr">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>ADV - France</title>
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-	
-	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_trip.css') }}">
-
-	</head>
-	<body>
-	
-		<div id="page">
-
-			<nav class="adv-nav">
-				<div class="adv-container">	
-					<div class="row">	
-						<div id="adv-logo"><a href="/">AD<em>V</em></a></div>
-							<ul>
-								<li><a href="destination.html">Destinations</a></li>
-								<li><a href="destination.html">Voyager</a></li>
-								<li><a href="pricing.html">Tarifs</a></li>
-								<li><a href="contact.html">Contact</a></li>
-							</ul>
-					</div>	
-				</div>
-			</nav>
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 		
-			<header id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/3.jpg)">
-				<div class="overlay"></div>
-				<div class="adv-container">
-					<div class="row">
-						<h1>{{destination.getName()}}</h1>
-						<p id="expertise">{{destination.getDesc()}}</p>	
-						
-					</div>
+		<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_trip.css') }}">
 
-					<div class="card">
-						<p>Prix :{{destination.getCost()}} €</p>
-						<p> Nombres de places : {{destination.getPlaces()}}</p>
-						<p> Durée du vol : {{destination.getDuration()}} min</p>
-						{% if not isLogged%}
-							<a href="/connexion"><button class="trip-button"> Réserver votre vol !  </button></a>
-						{% else %}
-							{% if session %}
-								<form method="POST" action="{{ url_for('reserver_post') }}" class="form">
-								<a href="/connexion"><button class="trip-button"> Réserver votre vol !  </button></a>
-								</form>
-							{% else %}
-								<a href="/error"><button class="trip-button"> Réserver votre vol !  </button></a>
-							{% endif %}
-								<a href="/inscription"><button class="trip-button"> Réserver votre vol !  </button></a>
-						{% endif %}
+		</head>
+		<body>
+		
+			<div id="page">
+
+				<nav class="adv-nav">
+					<div class="adv-container">	
+						<div class="row">	
+							<div id="adv-logo"><a href="/">AD<em>V</em></a></div>
+								<ul>
+									<li><a href="destination.html">Destinations</a></li>
+									<li><a href="destination.html">Voyager</a></li>
+									<li><a href="pricing.html">Tarifs</a></li>
+									<li><a href="contact.html">Contact</a></li>
+								</ul>
+						</div>	
 					</div>
-				</div>
-			</header>
+				</nav>
 			
-		</div>
+				<header id="adv-header" class="adv-cover adv-cover-md" style="background-image: url(../static/images/3.jpg)">
+					<div class="overlay"></div>
+					<div class="adv-container">
+						<div class="row">
+							<h1>{{destination.getName()}}</h1>
+							<p id="expertise">{{destination.getDesc()}}</p>	
+							
+						</div>
 
-	</body>
-</html>
+						<div class="card">
+							<p>Prix :{{destination.getCost()}} €</p>
+							<p> Nombres de places : {{destination.getPlaces()}}</p>
+							<p> Durée du vol : {{destination.getDuration()}} min</p>
+							{% if not isLogged%}
+								<a href="/connexion"><button class="trip-button"> Réserver votre vol !  </button></a>
+							{% else %}
+								{% if session %}
+									<button class="trip-button" action="{{ url_for('reserver_post') }}"> Réserver votre vol !  </button>
+								{% else %}
+									<a href="/error"><button class="trip-button"> Réserver votre vol !  </button></a>
+								{% endif %}
+								<a href="/inscription"><button class="trip-button"> Réserver votre vol !  </button></a>
+							{% endif %}
+						</div>
+					</div>
+				</header>
+				
+			</div>
+
+		</body>
+	</html>
