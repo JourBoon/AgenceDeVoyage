@@ -115,6 +115,7 @@ def signup_post():
     db_utils.execute(new_client_query, new_client_data)
     return redirect(url_for('login'))
 
+
 @app.route('/logout')
 def logout():
     return 'Logout'
