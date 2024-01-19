@@ -80,7 +80,7 @@ def login_post():
 
 @app.route('/dashboard')
 def dashboard():
-    return 'Tableau de bord'
+    return render_template("dashboard.html", isLogged=isLogged, session=session)
 
 @app.route('/inscription')
 def signup():
