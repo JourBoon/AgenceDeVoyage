@@ -119,12 +119,12 @@ def signup_post():
 def reserver_post():
     return redirect(url_for('dashboard'))
 
-@app.route('/logout')
+@app.route('/login')
 def logout():
     global isLogged, session
     isLogged = False
     session = None
-    return redirect(url_for('/'))
+    return redirect(url_for('/login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
