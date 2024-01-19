@@ -52,7 +52,7 @@ def trip():
     if dest_name:
         destinaton = voyageDAO.getDestinationByName(dest_name)
         if destinaton:
-            return render_template("trip.html", destination=destinaton)
+            return render_template("trip.html", destination=destinaton, isLogged = isLogged, session = session)
         else:
             return render_template("error.html", message="Destination non trouvé")
     else:
@@ -61,7 +61,7 @@ def trip():
 
 @app.route('/trip', methods=['GET', 'POST'])
 def reserver_post():
-    return redirect(url_for('/'))
+    return redirect(url_for('/dashboard'))
 
 @app.route('/connexion')
 def login():
