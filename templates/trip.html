@@ -46,11 +46,15 @@
 								<a href="/connexion"><button class="trip-button"> Réserver votre vol !  </button></a>
 							{% else %}
 								{% if session %}
-									<button class="trip-button" action="{{ url_for('reserver_post') }}"> Réserver votre vol !  </button>
+									<form method="post" action="{{ url_for('reserver_post') }}">
+										<button type="submit" class="trip-button">Réserver votre vol !</button>
+								 	</form>
 								{% else %}
 									<a href="/error"><button class="trip-button"> Réserver votre vol !  </button></a>
+									
 								{% endif %}
 							{% endif %}
+							
 						</div>
 					</div>
 				</header>

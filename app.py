@@ -61,7 +61,8 @@ def trip():
 
 @app.route('/trip', methods=['GET', 'POST'])
 def reserver_post():
-    return redirect(url_for('/dashboard'))
+    
+    return redirect(url_for('dashboard'))
 
 @app.route('/connexion')
 def login():
