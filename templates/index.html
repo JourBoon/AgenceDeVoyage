@@ -61,7 +61,7 @@
 					<div class="adv-destination-info">
 						<h2>{{voyage.getName()}}</h2>
 						<p>{{voyage.getDesc()}}</p>
-						<a href="{{ url_for('trip', dest_name=voyage.getName())}}"><button class="adv-btn">Rechercher un voyage</button></a>
+						<a href="{{ url_for('trip', session=session, dest_name=voyage.getName())}}"><button class="adv-btn">Rechercher un voyage</button></a>
 					</div>
 				</div>
                 {% endfor %}

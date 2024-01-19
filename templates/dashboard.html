@@ -29,8 +29,28 @@
 					<h1>Bonjour {{session.getFirstName()}}</h1>
 					<p id="expertise">Vous retrouverez ici toutes vos réservations !</p>	
 				</div>
+
 			</header>
 			
+			{% for reservation in reservations %}
+				<div class="adv-container" id="adv-voyages">
+					<div class="card">
+						<a class="card1">
+							<p>Voyage</p>
+							<p>{{ reservation.voyage.destination.getName() }}</p>
+							<p>Date de départ : {{ reservation.voyage.getDepartDate() }}</p>
+							<p>Date de retour : {{ reservation.voyage.getBackDate() }}</p>
+							<p>Places disponibles : {{ reservation.voyage.getPlaces() }}</p>
+							<p>Coût du voyage : {{ reservation.voyage.getCost()}}  €</p>
+							<p>Coût de la destination : {{ reservation.voyage.destination.getCost() }}  €</p>
+							<p>Places de la destination : {{ reservation.voyage.destination.getPlaces() }}  €</p>
+
+						</a>
+					</div>
+				</div>
+				
+			{% endfor %}
+
 		</div>
 
 	</body>

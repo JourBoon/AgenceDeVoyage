@@ -13,6 +13,9 @@ from flask import render_template, request, render_template, redirect, url_for, 
 from static.services.DBUtils import DBUtils
 from static.models.VoyageDAO import VoyageDAO
 from static.models.client import Client
+from static.models.reservation import Reservation
+from static.models.voyage import Voyage
+from static.models.destination import Destination
 
 print("Imports successfully instanciated")
 
@@ -31,6 +34,9 @@ voyageDAO = VoyageDAO()
 
 @app.route('/')
 def home():
+    """
+     Rendu de la page d'accueil index.html. Par défaut l'url est simplement l'adresse du site web sans argument.
+    """
     clients_id = db_utils.fetch("SELECT * FROM CLIENT")
     num_client = len(clients_id)
     dests_id = db_utils.fetch("SELECT * FROM DESTINATION")
@@ -45,64 +51,100 @@ def home():
 
 @app.route('/trip')
 def trip():
+    """
+     Page de récapitulatif de la réservation d'un voyage.
+    """
     dest_name = request.args.get('dest_name')
+    # Déclaration de voyage
     if dest_name:
         destinaton = voyageDAO.getDestinationByName(dest_name)
+        # Décris de voyage.
         if destinaton:
             return render_template("trip.html", destination=destinaton, isLogged = isLogged, session = session)
         else:
             return render_template("error.html", message="Destination non trouvée")
     else:
         return render_template("error.html", message="Paramètre manquant dans l'URL")
-    
-@app.route('/confirm')
-def confirm():
+
+@app.route('/trip', methods=['GET', 'POST'])
+def reserver_post():
+    """
+     Fonction de soumission de formulaire pour ajouter un nouveau voyage à la base de données.
+    """
+    if not isLogged and not session:
+        return redirect(url_for('login'))
+
     dest_name = request.args.get('dest_name')
+    email = session.getMail()
+    date_depart = request.form.get("date_depart")
+    date_retour = request.form.get("date_retour")
+
     if dest_name:
         destination = voyageDAO.getDestinationByName(dest_name)
+
         if destination:
-            users = db_utils.fetch("SELECT mail FROM CLIENT WHERE mail = ?", (session.getMail(),))
-            if users:
+            user = voyageDAO.getClientByEmail(email)
+            
+            # Si l'utilisateur n'est pas connecté, redirigez vers la page de connexion.
+            if not user:
                 flash('Impossible de récupérer le compte.')
                 return redirect(url_for('login'))
-            new_res_query = """
-            INSERT INTO RESERVATION (id_res, id_client, id_dest, cost)
-            VALUES (?, ?, ?, ?)
+
+            # Insertion du voyage
+            new_voyage_query = """
+            INSERT INTO VOYAGE (id_dest, date_depart, date_retour, places, cost)
+            VALUES (?, ?, ?, ?, ?)
             """
 
-            res_id = db_utils.fetch("SELECT * FROM RESERVATION")
-            num_res = len(res_id)
-
-            new_res_data = (
-                num_res+1,
-                session.getID(),
-                destination.getID(),
+            voyage_num = db_utils.fetch("SELECT * FROM VOYAGE")
+            voyage_id = len(voyage_num)
+            new_voyage_data = (
+                voyage_id+1,
+                date_depart,
+                date_retour,
+                destination.getPlaces(),
                 destination.getCost()
             )
-
+            print(voyage_id)
+            print(new_voyage_data)
+            db_utils.execute(new_voyage_query, new_voyage_data)
+            # Insertion de la réservation
+            new_res_query = """
+            INSERT INTO RESERVATION (id_client, id_dest, id_voy, cost)
+            VALUES (?, ?, ?, ?)
+            """
+            new_res_data = (
+                user.getID(),
+                destination.getID(),
+                voyage_id+1,
+                destination.getCost()
+            )
             db_utils.execute(new_res_query, new_res_data)
+
+            print('Réservation effectuée avec succès!')
             return redirect(url_for('dashboard'))
         else:
             return render_template("error.html", message="Destination non trouvée")
     else:
         return render_template("error.html", message="Paramètre manquant dans l'URL")
-    
-
-@app.route('/trip', methods=['GET', 'POST'])
-def reserver_post():
-    
-    return redirect(url_for('dashboard'))
 
 @app.route('/connexion')
 def login():
-    return render_template("connexion.html", isLogged=isLogged)
+    """
+     Rendu de la page connexion.html
+    """
+    return render_template("connexion.html", isLogged=isLogged, session=session)
 
 @app.route('/connexion', methods=['GET', 'POST'])
 def login_post():
+    """
+     Fonction de connexion. Cette fonction est appelée par l'interface Web lorsqu'un utilisateur tente de se connecter.
+    """
     global isLogged, session
     client = voyageDAO.getClientByEmail(request.form.get('email'))
     print(client.getMdp())
     print(request.form.get("mdp"))
+    # Authentification réchée flash Nom d'utilisateur ou mot de passe incorrect
     if client and request.form.get("mdp") == client.getMdp():
         # Authentification réussie
         isLogged = True
@@ -115,16 +157,42 @@ def login_post():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template("dashboard.html", isLogged=isLogged, session=session)
+    """
+     Rendu de la page tableau de bord. S'il n'y a pas d'utilisateur, un flash s'affiche. Si
+    """
+    global isLogged, session, voyageDAO
+    try:
+        email = session.getMail()
+        user = voyageDAO.getClientByEmail(email)
+        # Si l'utilisateur est connecté redirige vers la page de connexion.
+        if user:
+            # récupération des voyages du client.
+            reservations = voyageDAO.getReservationsWithDetails(user.getID())
+            return render_template("dashboard.html", isLogged=isLogged, session=user, reservations=reservations)
+        else:
+            flash('Impossible de récupérer le compte.')
+            return redirect(url_for('login'))
+    except Exception as e:
+        flash('Erreur lors de l\'accès au tableau de bord.')
+        print(str(e))
+        return redirect(url_for('login'))
 
 @app.route('/inscription')
 def signup():
+    """
+     Rendu de la page inscription.html
+    """
     return render_template('inscription.html')
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def signup_post():
+    """
+     Fonction de formulaire d'inscription. Crée un nouveau client et retourne à la page de connexion. Si l'
+    Rediriger vers la page de connexion ou rediriger vers la page d' inscription.
+    """
     email = request.form.get('email')
     users = db_utils.fetch("SELECT mail FROM CLIENT WHERE mail = ?", (email,))
+    # Si les utilisateurs ne sont pas connectés rediriger vers la page de connexion
     if users:
         flash('Il existe déjà un compte avec cette adresse mail')
         return redirect(url_for('login'))
@@ -152,10 +220,14 @@ def signup_post():
 
 @app.route('/logout')
 def logout():
+    """
+     Déconnecte l'utilisateur et le redirige vers la page de connexion.
+    """
     global isLogged, session
     isLogged = False
     session = None
     return redirect(url_for('login'))
 
+# Exécutez l'application si __main__ est l'application principale. Exécutez le débug True
 if __name__ == '__main__':
     app.run(debug=True)

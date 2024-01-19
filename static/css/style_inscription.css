@@ -817,7 +817,7 @@ form label {
 }
 
 .form label .input {
-  width: 100%;
+  width: 95%;
   padding: 10px 10px 20px 10px;
   outline: 0;
   border: 1px solid rgba(105, 105, 105, 0.397);

@@ -1,6 +1,8 @@
 from static.models.voyage import Voyage
 from static.models.destination import Destination
 from static.models.client import Client
+from static.models.reservation import Reservation
+from static.models.voyage import Voyage
 from static.services.DBUtils import DBUtils
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -18,11 +20,11 @@ class VoyageDAO:
         self.db_utils = DBUtils("database/database.db")
         pass
 
-    def toVoyage(self, dataset):
+    def toVoyage(self, dataset, column_names):
         """
         Convertir le dataset en objet Voyage.
         """
-        return Voyage(dataset)
+        return Voyage(dataset, column_names)
     
     def toClient(self, dataset, column_names):
         """
@@ -69,3 +71,56 @@ class VoyageDAO:
             return voyage
         else:
             return None
+        
+    def getReservationsByClient(self, client_id):
+        query = """
+        SELECT R.id_res, R.id_client, R.id_dest, R.cost,
+            D.nom_dest, D.desc_dest, D.cost as dest_cost, D.places as dest_places
+        FROM RESERVATION R
+        JOIN DESTINATION D ON R.id_dest = D.id_dest
+        WHERE R.id_client = ?
+        """
+        params = (client_id,)
+
+        results = self.db_utils.fetch(query, params)
+        column_names = [column[0] for column in self.db_utils.local.cur.description]
+
+        reservations = []
+        for result in results:
+            reservation = self.toReservation(result, column_names)
+            reservations.append(reservation)
+
+        return reservations
+    
+    def getReservationsWithDetails(self, client_id):
+        query = """
+        SELECT R.id_res, R.id_client, R.id_dest, R.cost,
+        V.id_voy, V.date_depart, V.date_retour, V.places, V.cost as voyage_cost,
+        D.nom_dest, D.desc_dest, D.cost as dest_cost, D.places as dest_places
+        FROM RESERVATION R
+        JOIN VOYAGE V ON R.id_voy = V.id_voy
+        JOIN DESTINATION D ON R.id_dest = D.id_dest
+        WHERE R.id_client = ?
+        """
+        params = (client_id,)
+
+        results = self.db_utils.fetch(query, params)
+        column_names = [column[0] for column in self.db_utils.local.cur.description]
+
+        reservations = []
+        for result in results:
+            print("sdfsdfsdfsfsdf",result)
+            reservation = self.toReservation(result, column_names)
+            reservation.destination = self.toDestination(result, column_names)
+            voyage = self.toVoyage(result, column_names)
+            voyage.setDestination(self.toDestination(result, column_names))
+            reservation.voyage = voyage
+            reservations.append(reservation)
+
+        return reservations
+
+    def toReservation(self, dataset, column_names):
+        """
+        Convertir le dataset en objet Reservation.
+        """
+        return Reservation(dataset, column_names)

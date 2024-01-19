@@ -9,7 +9,6 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 		
 		<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_trip.css') }}">
-
 		</head>
 		<body>
 		
@@ -45,24 +44,37 @@
 							
 						</div>
 
-						<div class="card">
-							<p>Prix :{{destination.getCost()}} €</p>
-							<p> Nombres de places : {{destination.getPlaces()}}</p>
-							<p> Durée du vol : {{destination.getDuration()}} min</p>
-							{% if not isLogged%}
-								<a href="/connexion"><button class="trip-button"> Réserver votre vol !  </button></a>
-							{% else %}
-								{% if session %}
-									<form method="post" action="{{ url_for('reserver_post') }}">
-										<button type="submit" class="trip-button">Réserver votre vol !</button>
-								 	</form>
+						<div class="row-form">
+							<form class="form" action="{{ url_for('reserver_post', session=session, dest_name=destination.getName()) }}" method="post">
+							<p class="title">Récapitulatif</p>
+							<p class="message">Prix :{{destination.getCost()}} € / Personnes</p>
+							<p class="message">Nombres de places : {{destination.getPlaces()}}</p>
+							<p class="message">Durée du vol : {{destination.getDuration()}} min</p>
+								<label>
+									<input placeholder="" name="personnes" type="number" class="input" min="1" value="1" required>
+									<span>Voyageurs</span>
+								</label>
+								<label for="date_depart">
+									<input required="" placeholder="" name="date_depart" id="date_depart" type="date" class="input" required>
+									<span>Date départ</span>
+								</label>
+								<label for="date_retour">
+									<input required="" placeholder="" name="date_retour" id="date_retour" type="date" class="input" required>
+									<span>Date retour</span>
+								</label>
+								{% if not isLogged%}
+									<a href="/connexion"><button class="trip-button" required>Se connecter d'abord !</button></a>		
 								{% else %}
-									<a href="/error"><button class="trip-button"> Réserver votre vol !  </button></a>
-									
+									{% if session %}
+										<button type="submit" class="trip-button">Réserver votre vol !</button>
+									{% else %}
+										<a href="/dashboard"><button class="trip-button" required>Se connecter d'abord !</button></a>			
+									{% endif %}	
 								{% endif %}
-							{% endif %}
-							
+							</form>
 						</div>
+
+						
 					</div>
 				</header>
 				
