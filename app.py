@@ -117,7 +117,10 @@ def signup_post():
 
 @app.route('/logout')
 def logout():
-    return 'Logout'
+    global isLogged, session
+    isLogged = False
+    session = None
+    return redirect(url_for('/'))
 
 if __name__ == '__main__':
     app.run(debug=True)
